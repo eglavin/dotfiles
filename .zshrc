@@ -19,6 +19,10 @@ fi
 if [ -e /opt/nvim/nvim ]; then
   export PATH="$PATH:/opt/nvim/"
 fi
+# Include nvim if installed to
+if [ -e /opt/nvim-linux64/bin/nvim ]; then
+  export PATH="$PATH:/opt/nvim-linux64/bin/"
+fi
 
 # Laod oh-my-zsh
 if [ -d $HOME/.oh-my-zsh ]; then
@@ -63,3 +67,7 @@ esac
 
 # Include local bin path
 export PATH="$HOME/.local/bin:$PATH"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
