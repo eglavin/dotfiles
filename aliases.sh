@@ -1,0 +1,53 @@
+# Directory
+
+change_directory_list() {
+  cd $1 || (pwd)
+  ls -CF
+}
+alias cdl=change_directory_list
+
+# Git
+
+git_who_am_i() {
+  echo "Name: $(git config --global user.name)"
+  echo "Email: $(git config --global user.email)"
+}
+alias gitwhoami=git_who_am_i
+
+git_push_branch() {
+  branch=$(git branch --show)
+  git push -u origin $branch
+}
+alias gitpb=git_push_branch
+
+git_open_remote() {
+  url=$(git config --get remote.origin.url)
+  if [[ $url == *"@"* ]]; then
+    open "https://${url#*@}"
+  else
+    open $url
+  fi
+}
+alias gitor=git_open_remote
+
+# Editor
+
+if [ -f "$(command -v nvim)" ]; then
+	alias vi='nvim'
+	alias vim='nvim'
+	export VISUAL=nvim
+	export EDITOR=nvim
+else
+	export VISUAL=vim
+	export EDITOR=vim
+fi
+
+alias c.='code .'
+alias ci.='code-insiders .'
+
+# Shell
+
+alias cls='clear'
+alias ipme='curl ifconfig.me/ip'
+alias pn='pnpm'
+alias cats='highlight -O ansi --force'
