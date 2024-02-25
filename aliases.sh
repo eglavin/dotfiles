@@ -51,3 +51,23 @@ alias cls='clear'
 alias ipme='curl ifconfig.me/ip'
 alias pn='pnpm'
 alias cats='highlight -O ansi --force'
+
+
+# Docker
+
+connect_to_docker_container() {
+  docker exec -it $1 /bin/bash
+}
+alias dce=connect_to_docker_container
+
+restart_docker_compose() {
+  docker-compose stop
+  docker-compose up -d
+}
+alias dcr=restart_docker_compose
+
+alias dcl='docker-compose logs -f'
+alias dcp='docker-compose pull'
+alias dcrm='docker-compose rm -f -s'
+alias dcs='docker-compose stop'
+alias dcup='docker-compose up -d'

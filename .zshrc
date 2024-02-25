@@ -31,7 +31,7 @@ if [ -d $HOME/.oh-my-zsh ]; then
   # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
   ZSH_THEME="agnoster"
 
-  # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd" see 'man strftime' for details.
+  # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd" see 'man strftime' for details
   HIST_STAMPS="yyyy-mm-dd"
 
   plugins=(
@@ -49,7 +49,7 @@ fi
 # Include my aliases
 source $HOME/dotfiles/aliases.sh
 
-# Duplicate pannel in the current path in windows terminal.
+# Duplicate panel in the current path in windows terminal
 keep_current_path() {
   printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
 }
@@ -67,7 +67,3 @@ esac
 
 # Include local bin path
 export PATH="$HOME/.local/bin:$PATH"
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
