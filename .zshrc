@@ -1,5 +1,5 @@
 # Override ls colors
-if [ -r $HOME/dotfiles/dircolors ]; then
+if [ -f "$(command -v dircolors)" ]; then
   eval "$(dircolors -b $HOME/dotfiles/dircolors)" || eval "$(dircolors -b)"
 fi
 
@@ -50,10 +50,12 @@ fi
 source $HOME/dotfiles/aliases.sh
 
 # Duplicate panel in the current path in windows terminal
-keep_current_path() {
-  printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
-}
-precmd_functions+=(keep_current_path)
+if [ -f "$(command -v wslpath)" ]; then
+  keep_current_path() {
+    printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
+  }
+  precmd_functions+=(keep_current_path)
+fi
 
 # Disable username in prompt
 export DEFAULT_USER=$USER

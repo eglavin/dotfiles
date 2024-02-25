@@ -5,7 +5,9 @@ case $- in
 esac
 
 # Override ls colors
-if [ -x /usr/bin/dircolors ]; then
+if [ -f "$(command -v dircolors)" ]; then
+	eval "$(dircolors -b $HOME/dotfiles/dircolors)" || eval "$(dircolors -b)"
+
 	alias ls='ls --color=auto'
 	alias dir='dir --color=auto'
 	alias vdir='vdir --color=auto'
@@ -13,10 +15,6 @@ if [ -x /usr/bin/dircolors ]; then
 	alias grep='grep --color=auto'
 	alias fgrep='fgrep --color=auto'
 	alias egrep='egrep --color=auto'
-
-	if [ -r $HOME/dotfiles/dircolors ]; then
-	  eval "$(dircolors -b $HOME/dotfiles/dircolors)" || eval "$(dircolors -b)"
-	fi
 fi
 
 # Load node version manager
@@ -45,7 +43,9 @@ export PATH="$HOME/.local/bin:$PATH"
 bind 'set completion-ignore-case on'
 
 # Duplicate panel in the current path in windows termianl
-PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"'
+if [ -f "$(command -v wslpath)" ]; then
+	PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"'
+fi
 
 # Bash history options
 HISTCONTROL=ignoreboth
