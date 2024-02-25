@@ -1,6 +1,6 @@
 # Override ls colors
-if [ -r $HOME/.dotfiles/dircolors ]; then
-  eval "$(dircolors -b $HOME/.dotfiles/dircolors)" || eval "$(dircolors -b)"
+if [ -r $HOME/dotfiles/dircolors ]; then
+  eval "$(dircolors -b $HOME/dotfiles/dircolors)" || eval "$(dircolors -b)"
 fi
 
 # Load node version manager
@@ -43,7 +43,7 @@ if [ -d $HOME/.oh-my-zsh ]; then
 fi
 
 # Include my aliases
-source $HOME/.dotfiles/aliases.sh
+source $HOME/dotfiles/aliases.sh
 
 # Duplicate pannel in the current path in windows terminal.
 keep_current_path() {
