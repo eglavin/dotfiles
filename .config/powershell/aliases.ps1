@@ -71,6 +71,7 @@ function e. { explorer . }
 function ipme { Write-Host (Invoke-WebRequest ifconfig.me/ip).Content.Trim() }
 function wt. { wt -d . }
 Set-Alias pn pnpm -Option AllScope
+Set-Alias g git -Option AllScope
 
 # Docker
 
