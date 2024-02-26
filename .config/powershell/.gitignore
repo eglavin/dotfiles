@@ -1,0 +1,6 @@
+*
+!.gitignore
+!Microsoft.PowerShell_profile.ps1
+!hotstick.minimal.omp.json
+!README.md
+!aliases.ps1
