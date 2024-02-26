@@ -76,3 +76,8 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
+
+# Include iterm2 shell integration
+if [ -e "${HOME}/.iterm2_shell_integration.zsh" ]; then
+  source "${HOME}/.iterm2_shell_integration.zsh"
+fi
