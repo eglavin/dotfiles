@@ -23,11 +23,11 @@ stow .
 
 ### Usage on windows
 
-The `install.ps1` file in the scripts folder will take care of linking the required files and folders.
+The `install-win-symlink.ps1` file in the scripts folder will take care of linking the required files and folders.
 
 ```ps1
 git clone https://github.com/eglavin/dotfiles.git ~/dotfiles
-~/dotfiles/scripts/install.ps1
+~/dotfiles/scripts/install-win-symlink.ps1
 ```
 
 ## References

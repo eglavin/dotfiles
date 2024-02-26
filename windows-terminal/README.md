@@ -1,6 +1,6 @@
 # Windows Terminal profile
 
-Use the `dotfiles/scripts/install.ps1` script to link files and folders.
+Use the `dotfiles/scripts/install-win-symlink.ps1` script to link files and folders.
 
 ## Prerequisites
 

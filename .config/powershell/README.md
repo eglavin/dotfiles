@@ -11,7 +11,7 @@ winget install --id=JanDeDobbeleer.OhMyPosh
 
 ## Installation
 
-Use the `dotfiles/scripts/install.ps1` script to link files and folders.
+Use the `dotfiles/scripts/install-win-symlink.ps1` script to link files and folders.
 
 ## Post-Install Powershell Modules (Optional)
 
