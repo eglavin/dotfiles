@@ -3,6 +3,7 @@
 ## Installation
 
 Requirements:
+
 - Git
 - Stow
 
@@ -20,6 +21,6 @@ cd ~/dotfiles
 stow .
 ```
 
-
 ## References
+
 [Youtube - Stow has forever changed the way I manage my dotfiles (Dreams of Autonomy)](https://www.youtube.com/watch?v=y6XCebnB9gs)
