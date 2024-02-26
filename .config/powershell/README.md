@@ -11,17 +11,7 @@ winget install --id=JanDeDobbeleer.OhMyPosh
 
 ## Installation
 
-This dotfiles repo is expected to be installed to the home path for the user installing it.
-
-The following command will create a junction sym linking it to the dotfiles location.
-
-```ps1
-$HOME_PATH = "$(Resolve-Path ~)"
-New-Item `
-  -ItemType Junction `
-  -Path "$HOME_PATH\Documents\PowerShell\" `
-  -Target "$HOME_PATH\dotfiles\.config\powershell\"
-```
+Use the `dotfiles/scripts/install.ps1` script to link files and folders.
 
 ## Post-Install Powershell Modules (Optional)
 

@@ -35,3 +35,4 @@ set shiftwidth=2
 set noswapfile
 set number
 set so=2
+set term=xterm-256color

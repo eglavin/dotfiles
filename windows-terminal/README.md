@@ -1,6 +1,6 @@
 # Windows Terminal profile
 
-To install this you can use the `install.ps1` script in this folder.
+Use the `dotfiles/scripts/install.ps1` script to link files and folders.
 
 ## Prerequisites
 
