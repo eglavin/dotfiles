@@ -7,13 +7,13 @@ $PROFILE_DIR = Split-Path -parent $PROFILE;
 Set-PSReadLineOption -HistoryNoDuplicates -PredictionSource HistoryAndPlugin -PredictionViewStyle ListView
 
 # Set up Posh-Git
-if (Get-Module -Name Posh-Git) {
+if (Get-Module -ListAvailable -Name Posh-Git) {
   $env:POSH_GIT_ENABLED = $true
   Import-Module -Name Posh-Git
 }
 
 # Set up Oh-My-Posh
-if (Get-Command -CommandType Cmdlet -Name oh-my-posh -ErrorAction SilentlyContinue) {
+if (Get-Command -Name oh-my-posh -ErrorAction SilentlyContinue) {
   oh-my-posh init pwsh --config "$PROFILE_DIR/hotstick.minimal.omp.json" | Invoke-Expression
 }
 

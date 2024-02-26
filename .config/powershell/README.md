@@ -2,25 +2,30 @@
 
 ## Prerequisites
 
-This powershell profile has been designed for Powershell 7+, which can be installed using:
+This powershell profile has been designed for Powershell 7+ and [Oh-My-Posh](https://ohmyposh.dev) which can be optionally installed using winget:
 
 ```ps1
 winget install --id=Microsoft.PowerShell
-```
-
-And [Oh-My-Posh](https://ohmyposh.dev) which can be installed using:
-
-```ps1
 winget install --id=JanDeDobbeleer.OhMyPosh
 ```
 
 ## Installation
 
-TBD
+This dotfiles repo is expected to be installed to the home path for the user installing it.
 
-## Post-Install Powershell Modules
+The following command will create a junction sym linking it to the dotfiles location.
 
-The following Powershell Modules are also required to be installed:
+```ps1
+$HOME_PATH = "$(Resolve-Path ~)"
+New-Item `
+  -ItemType Junction `
+  -Path "$HOME_PATH\Documents\PowerShell\" `
+  -Target "$HOME_PATH\dotfiles\.config\powershell\"
+```
+
+## Post-Install Powershell Modules (Optional)
+
+The following Powershell Modules are also optional to install:
 
 - [Posh-Git](https://github.com/dahlbyk/posh-git)
 
@@ -32,7 +37,7 @@ Install-Module -Name "posh-git" -Scope CurrentUser -Force
 
 Setup terminal fonts using Oh-My-Posh in an administrator window.
 
-Fonts to install:
+Fonts to be installed:
 
 - [FiraCode](https://github.com/tonsky/FiraCode)
 - [Meslo](https://github.com/andreberg/Meslo-Font)
