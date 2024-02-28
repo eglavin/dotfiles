@@ -81,3 +81,8 @@ fi
 if [ -e "${HOME}/.iterm2_shell_integration.zsh" ]; then
   source "${HOME}/.iterm2_shell_integration.zsh"
 fi
+
+# Init zoxide if command found
+if [ -f "$(command -v zoxide)" ]; then
+  eval "$(zoxide init zsh)"
+fi
