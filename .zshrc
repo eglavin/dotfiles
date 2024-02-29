@@ -86,3 +86,7 @@ fi
 if [ -f "$(command -v zoxide)" ]; then
   eval "$(zoxide init zsh)"
 fi
+
+# Disable homebrew auto updrading
+HOMEBREW_NO_INSTALL_UPGRADE=1
+
