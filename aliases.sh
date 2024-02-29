@@ -52,6 +52,10 @@ alias ipme='curl ifconfig.me/ip'
 alias pn='pnpm'
 alias cats='highlight -O ansi --force'
 
+# Preview file in quick look
+ql () {
+  qlmanage -p "$*" >& /dev/null & 
+}
 
 # Docker
 
