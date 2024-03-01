@@ -88,6 +88,11 @@ if [ -f "$(command -v zoxide)" ]; then
   eval "$(zoxide init zsh)"
 fi
 
+if [ -d "/usr/local/go/bin" ]; then
+  export GO111MODULE=on
+  export PATH="$PATH:/usr/local/go/bin"
+fi
+
 # Disable homebrew auto updating
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_UPGRADE=1
