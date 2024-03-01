@@ -41,6 +41,7 @@ if [ -d $HOME/.oh-my-zsh ]; then
     nvm
     sudo
     zsh-autosuggestions
+    zsh-autocomplete
   )
 
   source $ZSH/oh-my-zsh.sh
@@ -90,3 +91,7 @@ fi
 # Disable homebrew auto updating
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_UPGRADE=1
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
