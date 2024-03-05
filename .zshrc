@@ -41,7 +41,7 @@ if [ -d $HOME/.oh-my-zsh ]; then
     nvm
     sudo
     zsh-autosuggestions
-    zsh-autocomplete
+    # zsh-autocomplete
   )
 
   source $ZSH/oh-my-zsh.sh
