@@ -52,9 +52,28 @@ alias ipme='curl ifconfig.me/ip'
 alias pn='pnpm'
 alias cats='highlight -O ansi --force'
 
+pnpm_check_package() {
+  pnpm run typecheck
+  pnpm run lint:check
+  pnpm run test run
+}
+alias pncp='pnpm_check_package'
+
+pnpm_install_all() {
+  current_path=$(pwd)
+  for dir in */; do
+    echo "Installing: $dir";
+    cd $dir
+    pnpm install
+    cd $current_path
+    echo ""
+  done
+}
+alias pnia='pnpm_install_all'
+
 # Preview file in quick look
 ql () {
-  qlmanage -p "$*" >& /dev/null & 
+  qlmanage -p "$*" >& /dev/null &
 }
 
 # Docker
