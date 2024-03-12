@@ -62,11 +62,15 @@ alias pncp='pnpm_check_package'
 pnpm_install_all() {
   current_path=$(pwd)
   for dir in */; do
-    echo "Installing: $dir";
-    cd $dir
-    pnpm install
-    cd $current_path
-    echo ""
+    if [ -f "$dir/pnpm-lock.yaml" ]; then
+      echo "Installing: $dir";
+      cd $dir
+      pnpm install
+      cd $current_path
+      echo ""
+    else
+      echo "Not a pnpm project: $dir";
+    fi
   done
 }
 alias pnia='pnpm_install_all'
