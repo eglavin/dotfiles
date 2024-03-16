@@ -1,16 +1,15 @@
 # Directory
 
-# Remove built in powershell alias if exists
-if (Get-Alias -Name ls -ErrorAction SilentlyContinue) {
-  Remove-Item -force alias:ls
-}
-
 function .. { Set-Location .. }
 function cdl ([string] $dir = '.') {
   Set-Location $dir
   Get-ChildItem | Format-Wide -AutoSize
 }
-function ls { Get-ChildItem $args | Format-Wide -AutoSize }
+# Remove built in windows powershell alias if exists
+if (Get-Alias -Name ls -ErrorAction SilentlyContinue) {
+  Remove-Item -force alias:ls
+  function ls { Get-ChildItem $args | Format-Wide -AutoSize }
+}
 function ll { Get-ChildItem $args }
 function l { Get-ChildItem -Force $args }
 function la { Get-ChildItem -Force $args }
