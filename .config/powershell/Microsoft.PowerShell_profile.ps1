@@ -24,3 +24,10 @@ if (Test-Path -Path "$PROFILE_DIR/Microsoft.PowerShell_profile.local.ps1" -PathT
 
 # Override the default directory colour
 $PSStyle.FileInfo.Directory = "`e[34m"
+
+# Import the Chocolatey Profile that contains the necessary code to enable tab-completions to function for `choco`.
+# See https://ch0.co/tab-completion for details.
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}
