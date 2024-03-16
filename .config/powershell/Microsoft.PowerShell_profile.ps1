@@ -21,3 +21,6 @@ if (Get-Command -Name oh-my-posh -ErrorAction SilentlyContinue) {
 if (Test-Path -Path "$PROFILE_DIR/Microsoft.PowerShell_profile.local.ps1" -PathType Leaf) {
   . "$PROFILE_DIR/Microsoft.PowerShell_profile.local.ps1"
 }
+
+# Override the default directory colour
+$PSStyle.FileInfo.Directory = "`e[34m"

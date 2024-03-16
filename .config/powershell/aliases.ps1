@@ -10,10 +10,10 @@ function cdl ([string] $dir = '.') {
   Set-Location $dir
   Get-ChildItem | Format-Wide -AutoSize
 }
-function l { Get-ChildItem $args | Format-Wide -AutoSize }
 function ls { Get-ChildItem $args | Format-Wide -AutoSize }
-function la { Get-ChildItem -Force $args | Format-Wide -AutoSize }
-function ll { Get-ChildItem -Force $args }
+function ll { Get-ChildItem $args }
+function l { Get-ChildItem -Force $args }
+function la { Get-ChildItem -Force $args }
 function lt { Get-ChildItem -Force $args | Sort-Object LastWriteTime -Descending }
 
 # Git
