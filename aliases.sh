@@ -6,6 +6,8 @@ change_directory_list() {
 }
 alias cdl=change_directory_list
 
+alias lt='ls -ltFhA'
+
 # Git
 
 git_who_am_i() {
