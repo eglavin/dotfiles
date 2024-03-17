@@ -3,28 +3,16 @@ if [ -f "$(command -v dircolors)" ]; then
   eval "$(dircolors -b $HOME/dotfiles/dircolors)" || eval "$(dircolors -b)"
 fi
 
-# Load node version manager
-if [ -d $HOME/.nvm ]; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-fi
-
-# tabtab source for packages, uninstall by removing these lines
-if [ -f $HOME/.config/tabtab/zsh/__tabtab.zsh ]; then
-  source $HOME/.config/tabtab/zsh/__tabtab.zsh
-fi
-
 # Include nvim if installed to /opt/nvim
 if [ -e /opt/nvim/nvim ]; then
   export PATH="$PATH:/opt/nvim/"
 fi
-# Include nvim if installed to
+# Include nvim if installed to /opt/nvim-linux64
 if [ -e /opt/nvim-linux64/bin/nvim ]; then
   export PATH="$PATH:/opt/nvim-linux64/bin/"
 fi
 
-# Laod oh-my-zsh
+# Include oh-my-zsh
 if [ -d $HOME/.oh-my-zsh ]; then
   export ZSH=$HOME/.oh-my-zsh
 
@@ -41,10 +29,16 @@ if [ -d $HOME/.oh-my-zsh ]; then
     nvm
     sudo
     zsh-autosuggestions
-    # zsh-autocomplete
   )
 
   source $ZSH/oh-my-zsh.sh
+else
+  # oh-my-zsh will include nvm alread so we need to include it if not using oh-my-zsh
+  if [ -d $HOME/.nvm ]; then
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  fi
 fi
 
 # Include my aliases
@@ -68,7 +62,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-# set PATH so it includes user's private bin if it exists
+# Includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
   export PATH="$HOME/bin:$PATH"
 fi
@@ -93,15 +87,20 @@ if [ -f "$(command -v zoxide)" ]; then
   eval "$(zoxide init zsh)"
 fi
 
-if [ -d "/usr/local/go/bin" ]; then
-  export GO111MODULE=on
-  export PATH="$PATH:/usr/local/go/bin"
+# Include golang from profile.d
+if [ -f "/etc/profile.d/golang.sh" ]; then
+  source "/etc/profile.d/golang.sh"
+else
+  # or include golang from /usr/local/go/bin
+  if [ -d "/usr/local/go/bin" ]; then
+    export GO111MODULE=on
+    export PATH="$PATH:/usr/local/go/bin"
+  fi
 fi
 
 # Disable homebrew auto updating
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_UPGRADE=1
 
-# tabtab source for packages
-# uninstall by removing these lines
+# tabtab source for packages, uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
