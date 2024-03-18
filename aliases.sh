@@ -53,7 +53,9 @@ alias cls='clear'
 alias ipme='curl ifconfig.me/ip'
 alias pn='pnpm'
 alias cats='highlight -O ansi --force'
-alias bat="batcat"
+if [ -f "$(command -v batcat)" ]; then
+  alias bat="batcat"
+fi
 
 pnpm_check_package() {
   pnpm run typecheck
