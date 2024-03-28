@@ -35,17 +35,32 @@ alias gitor=git_open_remote
 # Editor
 
 if [ -f "$(command -v nvim)" ]; then
-	alias vi='nvim'
-	alias vim='nvim'
-	export VISUAL=nvim
-	export EDITOR=nvim
+  alias vi='nvim'
+  alias vim='nvim'
+  export VISUAL=nvim
+  export EDITOR=nvim
 else
-	export VISUAL=vim
-	export EDITOR=vim
+  export VISUAL=vim
+  export EDITOR=vim
 fi
 
-alias c.='code .'
-alias ci.='code-insiders .'
+function open_code() {
+  if [ -z "$*" ]; then
+    code .
+  else
+    code "$*"
+  fi
+}
+alias c.='open_code'
+
+function open_code_insiders() {
+  if [ -z "$*" ]; then
+    code-insiders .
+  else
+    code-insiders "$*"
+  fi
+}
+alias ci.='open_code_insiders'
 
 # Shell
 
