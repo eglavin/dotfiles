@@ -5,18 +5,25 @@
 [init]
 	defaultBranch = main
 
-[apply]
-	whitespace = fix
-
 [core]
 	autocrlf = true
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
+[apply]
+	whitespace = fix
+
+[push]
+	autoSetupRemote = true
+
 [merge]
+	autoStash = true
 	log = true
 
+[rebase]
+	autoStash = true
+
 [pull]
-	rebase = preserve
+	rebase = true
 
 [diff]
 	renames = copies
