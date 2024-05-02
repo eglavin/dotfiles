@@ -9,6 +9,7 @@
 	whitespace = fix
 
 [core]
+	autocrlf = true
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
 [merge]
@@ -22,6 +23,12 @@
 
 [pager]
 	branch = false
+
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
 
 [include]
 	# Use an additional, host-specific Git config (if it exists).

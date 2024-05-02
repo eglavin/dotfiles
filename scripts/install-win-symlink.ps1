@@ -57,3 +57,8 @@ CreateLink `
   -Path "$HOME\AppData\Local\nvim" `
   -Target "$HOME\dotfiles\.config\nvim"
 
+
+# Setup gitconfig
+CreateLink `
+  -Path "$HOME\.gitconfig" `
+  -Target "$HOME\dotfiles\.gitconfig"
