@@ -1,0 +1,28 @@
+[user]
+	name = Eanna Glavin
+	email = 29385958+eglavin@users.noreply.github.com
+
+[init]
+	defaultBranch = main
+
+[apply]
+	whitespace = fix
+
+[core]
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+[merge]
+	log = true
+
+[pull]
+	rebase = preserve
+
+[diff]
+	renames = copies
+
+[pager]
+	branch = false
+
+[include]
+	# Use an additional, host-specific Git config (if it exists).
+	path = ~/.gitconfig.local
