@@ -7,6 +7,7 @@
 
 [core]
 	autocrlf = true
+	longpaths = true
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
 [apply]
@@ -14,6 +15,7 @@
 
 [push]
 	autoSetupRemote = true
+	default = current
 
 [merge]
 	autoStash = true
