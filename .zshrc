@@ -3,12 +3,14 @@ if [ -f "$(command -v dircolors)" ]; then
   eval "$(dircolors -b $HOME/dotfiles/dircolors)" || eval "$(dircolors -b)"
 fi
 
-# Include nvim if installed to /opt/nvim
+# Disable username in prompt
+export DEFAULT_USER=$USER
+
 if [ -e /opt/nvim/nvim ]; then
+  # Include nvim if installed to /opt/nvim
   export PATH="$PATH:/opt/nvim/"
-fi
-# Include nvim if installed to /opt/nvim-linux64
-if [ -e /opt/nvim-linux64/bin/nvim ]; then
+elif [ -e /opt/nvim-linux64/bin/nvim ]; then
+  # Include nvim if installed to /opt/nvim-linux64
   export PATH="$PATH:/opt/nvim-linux64/bin/"
 fi
 
@@ -33,7 +35,7 @@ if [ -d $HOME/.oh-my-zsh ]; then
 
   source $ZSH/oh-my-zsh.sh
 else
-  # oh-my-zsh will include nvm alread so we need to include it if not using oh-my-zsh
+  # oh-my-zsh will include nvm already so we need to include it if not using oh-my-zsh
   if [ -d $HOME/.nvm ]; then
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -41,8 +43,39 @@ else
   fi
 fi
 
-# Include my aliases
+# My aliases
 source $HOME/dotfiles/aliases.sh
+
+# User's .profile if exists
+if [ -f "$HOME/.profile" ]; then
+  source "$HOME/.profile"
+fi
+
+# profile.d scripts, snap, golang etc.
+if [ -f "/etc/profile.d/apps-bin-path.sh" ]; then
+  source "/etc/profile.d/apps-bin-path.sh"
+fi
+if [ -f "/etc/profile.d/golang.sh" ]; then
+  source "/etc/profile.d/golang.sh"
+fi
+
+# Zoxide
+if [ -f "$(command -v zoxide)" ]; then
+  eval "$(zoxide init zsh)"
+fi
+
+# PNPM
+if [ -f "$HOME/.pnpm-tab-completion.sh" ]; then
+  source "$HOME/.pnpm-tab-completion.sh"
+fi
+
+# Bun
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# WSL Specific Options
+#
 
 # Duplicate panel in the current path in windows terminal
 if [ -f "$(command -v wslpath)" ]; then
@@ -52,66 +85,19 @@ if [ -f "$(command -v wslpath)" ]; then
   precmd_functions+=(keep_current_path)
 fi
 
-# Disable username in prompt
-export DEFAULT_USER=$USER
+# OSX Specific Options
+#
 
-# Include pnpm path
-export PNPM_HOME="$HOME/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
-# Includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-  export PATH="$HOME/bin:$PATH"
-fi
-
-# Include local bin path
-if [ -d "$HOME/.local/bin" ] ; then
-  export PATH="$HOME/.local/bin:$PATH"
-fi
-
-if [ -f "/etc/profile.d/apps-bin-path.sh" ]; then
-  source "/etc/profile.d/apps-bin-path.sh"
-fi
+# Disable homebrew auto updating
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_INSTALL_UPGRADE=1
 
 # Include brew
 if [ -x "/opt/homebrew/bin/brew" ]; then
-	eval "$(/opt/homebrew/bin/brew shellenv)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Include iterm2 shell integration
 if [ -e "${HOME}/.iterm2_shell_integration.zsh" ]; then
   source "${HOME}/.iterm2_shell_integration.zsh"
 fi
-
-# Init zoxide if command found
-if [ -f "$(command -v zoxide)" ]; then
-  eval "$(zoxide init zsh)"
-fi
-
-# Include golang from profile.d
-if [ -f "/etc/profile.d/golang.sh" ]; then
-  source "/etc/profile.d/golang.sh"
-else
-  # or include golang from /usr/local/go/bin
-  if [ -d "/usr/local/go/bin" ]; then
-    export GO111MODULE=on
-    export PATH="$PATH:/usr/local/go/bin"
-  fi
-fi
-
-# Disable homebrew auto updating
-export HOMEBREW_NO_AUTO_UPDATE=1
-export HOMEBREW_NO_INSTALL_UPGRADE=1
-
-# tabtab source for packages, uninstall by removing these lines
-[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
-
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"

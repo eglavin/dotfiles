@@ -327,7 +327,15 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 vim.o.tabstop = 2
-vim.o.so = 2
+vim.bo.tabstop = 2
+
+vim.o.shiftwidth = 2
+vim.bo.shiftwidth = 2
+
+vim.o.expandtab = false
+vim.bo.expandtab = false
+
+vim.o.so = 4
 
 -- [[ Basic Keymaps ]]
 
