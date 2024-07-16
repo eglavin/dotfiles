@@ -91,6 +91,14 @@ pnpm_check_package() {
 }
 alias pncp=pnpm_check_package
 
+normalise_line_endings() {
+  if [ -f "$1" ]; then
+    sed -i.bak "s/\r$//" "$1"
+  else
+    echo "File not found"
+  fi
+}
+
 # Preview file in quick look
 ql() {
   qlmanage -p "$*" >&/dev/null &
