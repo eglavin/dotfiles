@@ -115,10 +115,10 @@ restart_docker_compose() {
   docker-compose stop
   docker-compose up -d
 }
-alias dcr=restart_docker_compose
+alias dcrestart=restart_docker_compose
 
-alias dcl="docker-compose logs -f"
-alias dcp="docker-compose pull"
+alias dclogs="docker-compose logs -f"
+alias dcpull="docker-compose pull"
 alias dcrm="docker-compose rm -f -s"
-alias dcs="docker-compose stop"
+alias dcstop="docker-compose stop"
 alias dcup="docker-compose up -d"
