@@ -59,6 +59,11 @@ if [ -f "/etc/profile.d/golang.sh" ]; then
   source "/etc/profile.d/golang.sh"
 fi
 
+# Include fzf
+if [ -f ~/.fzf.zsh ]; then
+  source ~/.fzf.zsh
+fi
+
 # Zoxide
 if [ -f "$(command -v zoxide)" ]; then
   eval "$(zoxide init zsh)"
