@@ -31,3 +31,8 @@ $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
+
+# Add FNM completions
+if (Get-Command -Name fnm -ErrorAction SilentlyContinue) {
+  fnm completions --shell=power-shell | Out-String | Invoke-Expression
+}
