@@ -34,5 +34,6 @@ if (Test-Path($ChocolateyProfile)) {
 
 # Add FNM completions
 if (Get-Command -Name fnm -ErrorAction SilentlyContinue) {
+  fnm env | Out-String | Invoke-Expression
   fnm completions --shell=power-shell | Out-String | Invoke-Expression
 }
