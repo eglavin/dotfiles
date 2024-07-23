@@ -28,20 +28,14 @@ if [ -d $HOME/.oh-my-zsh ]; then
     cp
     git
     npm
-    nvm
     sudo
     zsh-autosuggestions
   )
 
   source $ZSH/oh-my-zsh.sh
-else
-  # oh-my-zsh will include nvm already so we need to include it if not using oh-my-zsh
-  if [ -d $HOME/.nvm ]; then
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-  fi
 fi
+
+############################################
 
 # My aliases
 source $HOME/dotfiles/aliases.sh
@@ -59,6 +53,8 @@ if [ -f "/etc/profile.d/golang.sh" ]; then
   source "/etc/profile.d/golang.sh"
 fi
 
+############################################
+
 # Include fzf
 if [ -f ~/.fzf.zsh ]; then
   source ~/.fzf.zsh
@@ -67,6 +63,14 @@ fi
 # Zoxide
 if [ -f "$(command -v zoxide)" ]; then
   eval "$(zoxide init zsh)"
+fi
+
+# FNM
+FNM_PATH="$HOME/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$HOME/.local/share/fnm:$PATH"
+  eval "$(fnm env)"
+  eval "$(fnm completions --shell zsh)"
 fi
 
 # PNPM
@@ -79,8 +83,8 @@ fi
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+############################################
 # WSL Specific Options
-#
 
 # Duplicate panel in the current path in windows terminal
 if [ -f "$(command -v wslpath)" ]; then
@@ -90,8 +94,8 @@ if [ -f "$(command -v wslpath)" ]; then
   precmd_functions+=(keep_current_path)
 fi
 
+############################################
 # OSX Specific Options
-#
 
 # Disable homebrew auto updating
 export HOMEBREW_NO_AUTO_UPDATE=1
@@ -106,3 +110,5 @@ fi
 if [ -e "${HOME}/.iterm2_shell_integration.zsh" ]; then
   source "${HOME}/.iterm2_shell_integration.zsh"
 fi
+
+############################################
