@@ -54,36 +54,6 @@ if [ -f "/etc/profile.d/golang.sh" ]; then
 fi
 
 ############################################
-
-# Include fzf
-if [ -f ~/.fzf.zsh ]; then
-  source ~/.fzf.zsh
-fi
-
-# Zoxide
-if [ -f "$(command -v zoxide)" ]; then
-  eval "$(zoxide init zsh)"
-fi
-
-# FNM
-FNM_PATH="$HOME/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$HOME/.local/share/fnm:$PATH"
-  eval "$(fnm env)"
-  eval "$(fnm completions --shell zsh)"
-fi
-
-# PNPM
-if [ -f "$HOME/.pnpm-tab-completion.sh" ]; then
-  source "$HOME/.pnpm-tab-completion.sh"
-fi
-
-# Bun
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-############################################
 # WSL Specific Options
 
 # Duplicate panel in the current path in windows terminal
@@ -107,8 +77,39 @@ if [ -x "/opt/homebrew/bin/brew" ]; then
 fi
 
 # Include iterm2 shell integration
-if [ -e "${HOME}/.iterm2_shell_integration.zsh" ]; then
-  source "${HOME}/.iterm2_shell_integration.zsh"
+if [ -e "$HOME/.iterm2_shell_integration.zsh" ]; then
+  source "$HOME/.iterm2_shell_integration.zsh"
 fi
+
+############################################
+
+# fzf
+if [ -f "$HOME/.fzf.zsh" ]; then
+  source $HOME/.fzf.zsh
+fi
+
+# Zoxide
+if [ -f "$(command -v zoxide)" ]; then
+  eval "$(zoxide init zsh)"
+fi
+
+# fnm
+if [ -d "$HOME/.local/share/fnm" ]; then
+  export PATH="$HOME/.local/share/fnm:$PATH"
+fi
+if [ -f "$(command -v fnm)" ]; then
+  eval "$(fnm env)"
+  eval "$(fnm completions --shell zsh)"
+fi
+
+# pnpm
+if [ -f "$HOME/.pnpm-tab-completion.sh" ]; then
+  source "$HOME/.pnpm-tab-completion.sh"
+fi
+
+# bun
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 ############################################
