@@ -1,57 +1,35 @@
-# Override ls colors
-if [ -f "$(command -v dircolors)" ]; then
-  eval "$(dircolors -b $HOME/dotfiles/dircolors)" || eval "$(dircolors -b)"
-fi
-
 # Disable username in prompt
 export DEFAULT_USER=$USER
 
-if [ -e /opt/nvim/nvim ]; then
-  # Include nvim if installed to /opt/nvim
-  export PATH="$PATH:/opt/nvim/"
-elif [ -e /opt/nvim-linux64/bin/nvim ]; then
-  # Include nvim if installed to /opt/nvim-linux64
-  export PATH="$PATH:/opt/nvim-linux64/bin/"
-fi
-
-# Include oh-my-zsh
+# oh-my-zsh
 if [ -d $HOME/.oh-my-zsh ]; then
   export ZSH=$HOME/.oh-my-zsh
 
-  # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-  ZSH_THEME="agnoster"
-
-  # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd" see 'man strftime' for details
   HIST_STAMPS="yyyy-mm-dd"
-
-  plugins=(
-    cp
-    git
-    npm
-    sudo
-    zsh-autosuggestions
-  )
+  ZSH_THEME="agnoster"
+  plugins=(git zsh-autosuggestions)
 
   source $ZSH/oh-my-zsh.sh
+else
+  mkdir $HOME/.oh-my-zsh
+
+  git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
+  git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+  echo ""
+  echo "Restart zsh to load oh-my-zsh"
 fi
 
 ############################################
 
-# My aliases
+[ -f $HOME/.profile ] && source $HOME/.profile
+
+# profile.d scripts, snap, golang, nvim etc.
+[ -f /etc/profile.d/apps-bin-path.sh ] && source /etc/profile.d/apps-bin-path.sh
+[ -f /etc/profile.d/golang.sh ] && source /etc/profile.d/golang.sh
+[ -f /etc/profile.d/nvim.sh ] && source /etc/profile.d/nvim.sh
+
 source $HOME/dotfiles/aliases.sh
-
-# User's .profile if exists
-if [ -f "$HOME/.profile" ]; then
-  source "$HOME/.profile"
-fi
-
-# profile.d scripts, snap, golang etc.
-if [ -f "/etc/profile.d/apps-bin-path.sh" ]; then
-  source "/etc/profile.d/apps-bin-path.sh"
-fi
-if [ -f "/etc/profile.d/golang.sh" ]; then
-  source "/etc/profile.d/golang.sh"
-fi
 
 ############################################
 # WSL Specific Options
@@ -67,34 +45,33 @@ fi
 ############################################
 # OSX Specific Options
 
-# Disable homebrew auto updating
-export HOMEBREW_NO_AUTO_UPDATE=1
-export HOMEBREW_NO_INSTALL_UPGRADE=1
+# brew
+if [ -x /opt/homebrew/bin/brew ]; then
+  # Disable homebrew auto updating
+  export HOMEBREW_NO_AUTO_UPDATE=1
+  export HOMEBREW_NO_INSTALL_UPGRADE=1
 
-# Include brew
-if [ -x "/opt/homebrew/bin/brew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Include iterm2 shell integration
-if [ -e "$HOME/.iterm2_shell_integration.zsh" ]; then
-  source "$HOME/.iterm2_shell_integration.zsh"
-fi
+# iterm2
+[ -e $HOME/.iterm2_shell_integration.zsh ] && source $HOME/.iterm2_shell_integration.zsh
 
 ############################################
 
-# fzf
-if [ -f "$HOME/.fzf.zsh" ]; then
-  source $HOME/.fzf.zsh
+# dircolors
+if [ -f "$(command -v dircolors)" ]; then
+  eval "$(dircolors -b $HOME/dotfiles/dircolors)" || eval "$(dircolors -b)"
 fi
 
-# Zoxide
-if [ -f "$(command -v zoxide)" ]; then
-  eval "$(zoxide init zsh)"
-fi
+# fzf
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+
+# zoxide
+[ -f "$(command -v zoxide)" ] && eval "$(zoxide init zsh)"
 
 # fnm
-if [ -d "$HOME/.local/share/fnm" ]; then
+if [ -d $HOME/.local/share/fnm ]; then
   export PATH="$HOME/.local/share/fnm:$PATH"
 fi
 if [ -f "$(command -v fnm)" ]; then
@@ -103,13 +80,13 @@ if [ -f "$(command -v fnm)" ]; then
 fi
 
 # pnpm
-if [ -f "$HOME/.pnpm-tab-completion.sh" ]; then
-  source "$HOME/.pnpm-tab-completion.sh"
-fi
+[ -f $HOME/.pnpm-tab-completion.sh ] && source $HOME/.pnpm-tab-completion.sh
 
 # bun
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+if [ -f $HOME/.bun/_bun ]; then
+  source $HOME/.bun/_bun
+  export BUN_INSTALL="$HOME/.bun"
+  export PATH="$BUN_INSTALL/bin:$PATH"
+fi
 
 ############################################
