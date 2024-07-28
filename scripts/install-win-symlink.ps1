@@ -62,3 +62,6 @@ CreateLink `
 CreateLink `
   -Path "$HOME\.gitconfig" `
   -Target "$HOME\dotfiles\.gitconfig"
+CreateLink `
+  -Path "$HOME\.gitignore_global" `
+  -Target "$HOME\dotfiles\.gitignore_global"
