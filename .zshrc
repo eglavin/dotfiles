@@ -66,6 +66,8 @@ fi
 [ -d $HOME/.local/bin ] && export PATH="$HOME/.local/bin:$PATH"
 [ -d $HOME/bin ] && export PATH="$HOME/bin:$PATH"
 
+[ -d $HOME/.zshrc.local ] && source $HOME/.zshrc.local
+
 source $HOME/dotfiles/aliases.sh
 
 ############################################
