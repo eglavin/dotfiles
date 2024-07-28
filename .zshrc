@@ -59,6 +59,17 @@ fi
 
 ############################################
 
+# linuxbrew
+if [ -d /home/linuxbrew/.linuxbrew ]; then
+  # Disable homebrew auto updating
+  export HOMEBREW_NO_AUTO_UPDATE=1
+  export HOMEBREW_NO_INSTALL_UPGRADE=1
+
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+############################################
+
 # dircolors
 if [ -f "$(command -v dircolors)" ]; then
   eval "$(dircolors -b $HOME/dotfiles/dircolors)" || eval "$(dircolors -b)"
