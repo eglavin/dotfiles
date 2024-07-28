@@ -21,17 +21,6 @@ else
 fi
 
 ############################################
-
-[ -f $HOME/.profile ] && source $HOME/.profile
-
-# profile.d scripts, snap, golang, nvim etc.
-[ -f /etc/profile.d/apps-bin-path.sh ] && source /etc/profile.d/apps-bin-path.sh
-[ -f /etc/profile.d/golang.sh ] && source /etc/profile.d/golang.sh
-[ -f /etc/profile.d/nvim.sh ] && source /etc/profile.d/nvim.sh
-
-source $HOME/dotfiles/aliases.sh
-
-############################################
 # WSL Specific Options
 
 # Duplicate panel in the current path in windows terminal
@@ -58,6 +47,7 @@ fi
 [ -e $HOME/.iterm2_shell_integration.zsh ] && source $HOME/.iterm2_shell_integration.zsh
 
 ############################################
+# Linux Specific Options
 
 # linuxbrew
 if [ -d /home/linuxbrew/.linuxbrew ]; then
@@ -67,6 +57,16 @@ if [ -d /home/linuxbrew/.linuxbrew ]; then
 
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+# snap
+[ -f /etc/profile.d/apps-bin-path.sh ] && source /etc/profile.d/apps-bin-path.sh
+
+############################################
+
+[ -d $HOME/.local/bin ] && export PATH="$HOME/.local/bin:$PATH"
+[ -d $HOME/bin ] && export PATH="$HOME/bin:$PATH"
+
+source $HOME/dotfiles/aliases.sh
 
 ############################################
 
