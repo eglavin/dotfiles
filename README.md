@@ -1,19 +1,12 @@
 # dotfiles
 
-## Installation
+## Installation (Linux/Mac)
 
-Requirements:
+Requirements: `Git` and `Stow`
 
-- Git
-- Stow
+These can be installed with apt by using this command: `sudo apt install git stow`, or with brew by using this command: `brew install git stow`.
 
-Which can be installed with this command.
-
-```sh
-sudo apt install git stow
-```
-
-To download and install this dotfile use the following commands to clone the repo and activate stow.
+These dotfiles expect to be stored in the `~/dotfiles` location. To download, install and activate use the following commands:
 
 ```sh
 git clone https://github.com/eglavin/dotfiles.git ~/dotfiles
@@ -21,13 +14,15 @@ cd ~/dotfiles
 stow .
 ```
 
-### Usage on windows
+## Installation (Windows)
 
-The `install-win-symlink.ps1` file in the scripts folder will take care of linking the required files and folders.
+Requirements: `Git` `Powershell 7+`
+
+The `create-symlinks.ps1` file in the scripts folder will take care of linking supported files to the correct location. To download, install and activate use the following commands:
 
 ```ps1
 git clone https://github.com/eglavin/dotfiles.git ~/dotfiles
-~/dotfiles/scripts/install-win-symlink.ps1
+~/dotfiles/scripts/create-symlinks.ps1
 ```
 
 ## References
