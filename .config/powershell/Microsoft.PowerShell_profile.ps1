@@ -1,39 +1,51 @@
 $PROFILE_DIR = Split-Path -parent $PROFILE;
 
-# Include my aliases
 . "$PROFILE_DIR/aliases.ps1"
 
-# Defined PS ReadLine options
+if (Test-Path -Path "$PROFILE_DIR/Microsoft.PowerShell_profile.local.ps1" -PathType Leaf) {
+  . "$PROFILE_DIR/Microsoft.PowerShell_profile.local.ps1"
+}
+
+############################################
+
 Set-PSReadLineOption -HistoryNoDuplicates -PredictionSource HistoryAndPlugin -PredictionViewStyle ListView
 
-# Set up Posh-Git
+# Posh-Git
 if (Get-Module -ListAvailable -Name Posh-Git) {
   $env:POSH_GIT_ENABLED = $true
   Import-Module -Name Posh-Git
 }
 
-# Set up Oh-My-Posh
+# oh-my-posh
 if (Get-Command -Name oh-my-posh -ErrorAction SilentlyContinue) {
   oh-my-posh init pwsh --config "$PROFILE_DIR/hotstick.minimal.omp.json" | Invoke-Expression
 }
 
-# Check for a local profile
-if (Test-Path -Path "$PROFILE_DIR/Microsoft.PowerShell_profile.local.ps1" -PathType Leaf) {
-  . "$PROFILE_DIR/Microsoft.PowerShell_profile.local.ps1"
-}
-
-# Override the default directory colour
+# Remove background color directories when listing files
 $PSStyle.FileInfo.Directory = "`e[34m"
 
-# Import the Chocolatey Profile that contains the necessary code to enable tab-completions to function for `choco`.
-# See https://ch0.co/tab-completion for details.
+############################################
+
+# chocolatey
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 
-# Add FNM completions
+# zoxide
+if (Get-Command -Name zoxide -ErrorAction SilentlyContinue) {
+  Invoke-Expression (& { (zoxide init powershell | Out-String) })
+}
+
+# fnm
 if (Get-Command -Name fnm -ErrorAction SilentlyContinue) {
   fnm env | Out-String | Invoke-Expression
   fnm completions --shell=power-shell | Out-String | Invoke-Expression
 }
+
+# pnpm
+if (Get-Command -Name pnpm -ErrorAction SilentlyContinue) {
+  pnpm completion pwsh | Out-String | Invoke-Expression
+}
+
+############################################

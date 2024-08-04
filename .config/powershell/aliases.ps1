@@ -45,8 +45,22 @@ function UseNvimOrVim {
 Set-Alias vi UseNvimOrVim -Option AllScope
 Set-Alias vim UseNvimOrVim -Option AllScope
 
-function c. { code . }
-function ci. { code-insiders . }
+function c. {
+  if ($args) {
+    code $args
+  }
+  else {
+    code .
+  }
+}
+function ci. {
+  if ($args) {
+    code-insiders $args
+  }
+  else {
+    code-insiders .
+  }
+}
 function GetVisualStudioLocation {
   # Determining Installed Visual Studio Path for 2017 https://stackoverflow.com/a/54729540
   return Get-ItemPropertyValue `
@@ -66,21 +80,35 @@ function vsp. {
 
 # Shell
 
-function e. { explorer . }
+function e. {
+  if ($args) {
+    explorer $args
+  }
+  else {
+    explorer .
+  }
+}
 function ipme { Write-Host (Invoke-WebRequest ifconfig.me/ip).Content.Trim() }
-function wt. { wt -d . }
+function wt. {
+  if ($args) {
+    wt -d $args
+  }
+  else {
+    wt -d .
+  }
+}
 Set-Alias pn pnpm -Option AllScope
 Set-Alias g git -Option AllScope
 
 # Docker
 
 function dce { docker exec -it $args bash }
-function dcl { docker-compose logs -f }
-function dcp { docker-compose pull }
-function dcr {
+function dclogs { docker-compose logs -f }
+function dcpull { docker-compose pull }
+function dcrestart {
   docker-compose stop
   docker-compose up -d
 }
 function dcrm { docker-compose rm -f -s }
-function dcs { docker-compose stop }
+function dcstop { docker-compose stop }
 function dcup { docker-compose up -d }

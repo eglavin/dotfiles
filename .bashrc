@@ -94,7 +94,7 @@ fi
 ############################################
 
 # fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f "$(command -v fzf)" ] && eval "$(fzf --bash)"
 
 # zoxide
 [ -f "$(command -v zoxide)" ] && eval "$(zoxide init bash)"

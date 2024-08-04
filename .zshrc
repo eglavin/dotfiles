@@ -78,7 +78,7 @@ if [ -f "$(command -v dircolors)" ]; then
 fi
 
 # fzf
-[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+[ -f "$(command -v fzf)" ] && source <(fzf --zsh)
 
 # zoxide
 [ -f "$(command -v zoxide)" ] && eval "$(zoxide init zsh)"
