@@ -100,6 +100,11 @@ function wt. {
 Set-Alias pn pnpm -Option AllScope
 Set-Alias g git -Option AllScope
 
+function which {
+  Get-Command -Name $args -ErrorAction SilentlyContinue |
+  Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
+}
+
 # Docker
 
 function dce { docker exec -it $args bash }
