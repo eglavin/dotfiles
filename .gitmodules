@@ -1,0 +1,3 @@
+[submodule "scripts/ansible"]
+	path = scripts/ansible
+	url = https://github.com/eglavin/ansible-playbook
