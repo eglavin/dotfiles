@@ -1,0 +1,41 @@
+[window]
+padding = { x = 4, y = 6 }
+dynamic_padding = true
+startup_mode = "Maximized"
+
+[scrolling]
+history = 10000
+
+[font]
+normal.family = "MesloLGL NF"
+size = 14.0
+offset = { x = 1, y = 2 }
+
+[cursor]
+style.blinking = "Always"
+
+# Colors (Nord) https://github.com/alacritty/alacritty-theme/blob/4091fddff8da892d5594e94116927c7445620867/themes/nord.toml
+
+[colors.primary]
+background = '#2E3440'
+foreground = '#D8DEE9'
+
+[colors.normal]
+black = '#3B4252'
+red = '#BF616A'
+green = '#A3BE8C'
+yellow = '#EBCB8B'
+blue = '#81A1C1'
+magenta = '#B48EAD'
+cyan = '#88C0D0'
+white = '#E5E9F0'
+
+[colors.bright]
+black = '#4C566A'
+red = '#BF616A'
+green = '#A3BE8C'
+yellow = '#EBCB8B'
+blue = '#81A1C1'
+magenta = '#B48EAD'
+cyan = '#8FBCBB'
+white = '#ECEFF4'
