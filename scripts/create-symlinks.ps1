@@ -68,6 +68,13 @@ $SystemLinks = @(
     Target = "$HOME\dotfiles\windows-terminal\settings.json";
   }
 
+  # Alacritty
+  @{
+    Type   = "Junction";
+    Path   = "$env:AppData\alacritty";
+    Target = "$HOME\dotfiles\.config\alacritty";
+  },
+
   # Powershell
   @{
     Type   = "Junction";
@@ -88,7 +95,7 @@ $SystemLinks = @(
   },
   @{
     Type   = "Junction";
-    Path   = "$HOME\AppData\Local\nvim";
+    Path   = "$env:LocalAppData\nvim";
     Target = "$HOME\dotfiles\.config\nvim";
   },
 
