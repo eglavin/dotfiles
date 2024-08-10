@@ -6,7 +6,19 @@ change_directory_list() {
 }
 alias cdl=change_directory_list
 
-alias lt="ls -ltFhA"
+if [ -f "$(command -v eza)" ]; then
+  alias ls="eza"
+  alias ll="eza -l"
+  alias l="eza -la"
+  alias la="eza -la"
+  alias lsa="eza -la"
+  alias lt="eza -la --sort=modified --reverse"
+else
+  alias ll="ls -lh"
+  alias l="ls -lAh"
+  alias la="ls -lAh"
+  alias lsa="ls -lAh"
+fi
 
 # Git
 
