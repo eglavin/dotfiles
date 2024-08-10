@@ -1,2 +1,3 @@
+.config/alacritty/alacritty.local.toml
 .vim/plugged/
 .vim/.netrwhist
