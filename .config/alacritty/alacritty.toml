@@ -1,3 +1,7 @@
+import = [
+  "~/dotfiles/.config/alacritty/alacritty.local.toml"
+]
+
 [window]
 padding = { x = 4, y = 6 }
 dynamic_padding = true
