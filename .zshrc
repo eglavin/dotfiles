@@ -5,9 +5,12 @@ export DEFAULT_USER=$USER
 if [ -d $HOME/.oh-my-zsh ]; then
   export ZSH=$HOME/.oh-my-zsh
 
+  export PYTHON_AUTO_VRUN=true
+  export PYTHON_VENV_NAME=".venv"
+
   HIST_STAMPS="yyyy-mm-dd"
   ZSH_THEME="agnoster"
-  plugins=(git zsh-autosuggestions)
+  plugins=(git zsh-autosuggestions python virtualenv)
 
   source $ZSH/oh-my-zsh.sh
 else
