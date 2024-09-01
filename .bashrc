@@ -108,4 +108,9 @@ if [ -f "$(command -v fnm)" ]; then
   eval "$(fnm completions --shell bash)"
 fi
 
+# cargo
+if [ -d $HOME/.cargo ]; then;
+  . "$HOME/.cargo/env"
+fi
+
 ############################################
