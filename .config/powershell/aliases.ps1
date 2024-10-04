@@ -97,6 +97,11 @@ function wt. {
     wt -d .
   }
 }
+function pncp {
+  pnpm run typecheck
+  pnpm run lint:check
+  pnpm run test run
+}
 Set-Alias pn pnpm -Option AllScope
 Set-Alias g git -Option AllScope
 
