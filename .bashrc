@@ -109,7 +109,7 @@ if [ -f "$(command -v fnm)" ]; then
 fi
 
 # cargo
-if [ -d $HOME/.cargo ]; then;
+if [ -d $HOME/.cargo ]; then
   . "$HOME/.cargo/env"
 fi
 
