@@ -43,5 +43,7 @@
 	clean = git-lfs clean -- %f
 
 [include]
+  # Enable to use delta as the default pager.
+	# path = ~/dotfiles/.gitconfig_delta
 	# Use an additional, host-specific Git config (if it exists).
 	path = ~/.gitconfig.local
