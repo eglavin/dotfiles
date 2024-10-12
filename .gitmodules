@@ -1,3 +1,6 @@
 [submodule "scripts/ansible"]
 	path = scripts/ansible
 	url = https://github.com/eglavin/ansible-playbook
+[submodule "scripts/winget"]
+	path = scripts/winget
+	url = https://github.com/eglavin/fresh-windows-install
