@@ -11,7 +11,7 @@
 	autocrlf = input
 	longpaths = true
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/dotfiles/.gitignore_global
 
 [apply]
 	whitespace = fix
@@ -43,7 +43,7 @@
 	clean = git-lfs clean -- %f
 
 [include]
-  # Enable to use delta as the default pager.
+	# Enable to use delta as the default pager.
 	# path = ~/dotfiles/.gitconfig_delta
 	# Use an additional, host-specific Git config (if it exists).
 	path = ~/.gitconfig.local

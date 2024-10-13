@@ -1,8 +1,11 @@
 .git
 .gitattributes
+.gitconfig_delta
 .gitignore
+.gitignore_global
+.gitmodules
 aliases.sh
 dircolors
 README.md
-windows-terminal
 scripts
+windows-terminal
