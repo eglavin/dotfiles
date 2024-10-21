@@ -8,7 +8,7 @@ if (Test-Path -Path "$PROFILE_DIR/Microsoft.PowerShell_profile.local.ps1" -PathT
 
 ############################################
 
-Set-PSReadLineOption -HistoryNoDuplicates -PredictionSource HistoryAndPlugin -PredictionViewStyle ListView
+Set-PSReadLineOption -HistoryNoDuplicates -PredictionSource HistoryAndPlugin
 
 # Posh-Git
 if (Get-Module -ListAvailable -Name Posh-Git) {
