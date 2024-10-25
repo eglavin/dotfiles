@@ -1,3 +1,4 @@
+[general]
 import = [
   "~/dotfiles/.config/alacritty/alacritty.local.toml"
 ]
@@ -11,7 +12,7 @@ startup_mode = "Maximized"
 history = 10000
 
 [font]
-normal.family = "MesloLGL NF"
+normal.family = "MesloLGL Nerd Font"
 size = 14.0
 offset = { x = 1, y = 2 }
 

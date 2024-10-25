@@ -40,6 +40,7 @@ Using oh-my-posh, we can use the following commands to setup some of the fonts u
 
 ```ps1
 oh-my-posh font install FiraCode
+oh-my-posh font install JetBrainsMono
 oh-my-posh font install Meslo
 ```
 
