@@ -39,8 +39,8 @@ if (Get-Command -Name zoxide -ErrorAction SilentlyContinue) {
 
 # fnm
 if (Get-Command -Name fnm -ErrorAction SilentlyContinue) {
-  fnm env | Out-String | Invoke-Expression
-  fnm completions --shell=power-shell | Out-String | Invoke-Expression
+  fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
+  fnm completions --shell powershell | Out-String | Invoke-Expression
 }
 
 # pnpm
