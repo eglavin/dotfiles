@@ -24,9 +24,19 @@ function ConfirmAction {
 function CreateLink {
   param (
     [string] $Type, # SymbolicLink or Junction
+    [string] $Directory = "", # Directory to create if it doesn't exist
     [string] $Path,
     [string] $Target
   )
+
+  if ("" -ne $Directory -and (-not (Test-Path $Directory))) {
+    Write-Host "Creating directory $Directory"
+
+    if ($Run) {
+      New-Item -Path $Directory -ItemType Directory
+    }
+  }
+
 
   if (Test-Path $Path) {
     $PathIsLink = [bool]((Get-Item $Path -Force -ea SilentlyContinue).Attributes -band [IO.FileAttributes]::ReparsePoint)
@@ -110,11 +120,20 @@ $SystemLinks = @(
     Path   = "$HOME\.gitignore_global";
     Target = "$HOME\dotfiles\.gitignore_global";
   }
+
+  # yt-dlp
+  @{
+    Type      = "SymbolicLink";
+    Directory = "$env:AppData\yt-dlp";
+    Path      = "$env:AppData\yt-dlp\config";
+    Target    = "$HOME\dotfiles\.config\yt-dlp\yt-dlp.conf";
+  }
 );
 
 foreach ($SystemLink in $SystemLinks) {
   CreateLink `
     -Type $SystemLink.Type `
+    -Directory $SystemLink.Directory `
     -Path $SystemLink.Path `
     -Target $SystemLink.Target
 }
