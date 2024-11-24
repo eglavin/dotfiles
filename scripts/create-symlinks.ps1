@@ -126,7 +126,7 @@ $SystemLinks = @(
     Type      = "SymbolicLink";
     Directory = "$env:AppData\yt-dlp";
     Path      = "$env:AppData\yt-dlp\config";
-    Target    = "$HOME\dotfiles\.config\yt-dlp\yt-dlp.conf";
+    Target    = "$HOME\dotfiles\.config\yt-dlp\config";
   }
 );
 
