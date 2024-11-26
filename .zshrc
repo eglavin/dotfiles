@@ -1,6 +1,9 @@
 # Disable username in prompt
 export DEFAULT_USER=$USER
 
+GPG_TTY=$(tty)
+export GPG_TTY
+
 # oh-my-zsh
 if [ -d $HOME/.oh-my-zsh ]; then
   export ZSH=$HOME/.oh-my-zsh
