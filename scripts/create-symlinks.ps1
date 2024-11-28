@@ -94,11 +94,6 @@ $SystemLinks = @(
 
   # Vim + Neovim
   @{
-    Type   = "SymbolicLink";
-    Path   = "$HOME\.vimrc";
-    Target = "$HOME\dotfiles\.vimrc";
-  },
-  @{
     Type   = "Junction";
     Path   = "$HOME\.vim";
     Target = "$HOME\dotfiles\.vim";
@@ -115,11 +110,6 @@ $SystemLinks = @(
     Path   = "$HOME\.gitconfig";
     Target = "$HOME\dotfiles\.gitconfig";
   },
-  @{
-    Type   = "SymbolicLink";
-    Path   = "$HOME\.gitignore_global";
-    Target = "$HOME\dotfiles\.gitignore_global";
-  }
 
   # yt-dlp
   @{

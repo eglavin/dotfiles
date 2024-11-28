@@ -5,7 +5,8 @@
 .gitignore_global
 .gitmodules
 aliases.sh
-dircolors
+ansible
 README.md
 scripts
 windows-terminal
+winget

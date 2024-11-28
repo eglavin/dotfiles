@@ -62,7 +62,7 @@ fi
 
 # dircolors
 if [ -f "$(command -v dircolors)" ]; then
-	eval "$(dircolors -b $HOME/dotfiles/dircolors)" || eval "$(dircolors -b)"
+	eval "$(dircolors -b $HOME/dotfiles/.config/dircolors/config)" || eval "$(dircolors -b)"
 
 	alias ls='ls --color=auto'
 	alias dir='dir --color=auto'
