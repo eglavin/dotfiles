@@ -18,7 +18,7 @@ if (Get-Module -ListAvailable -Name Posh-Git) {
 
 # oh-my-posh
 if (Get-Command -Name oh-my-posh -ErrorAction SilentlyContinue) {
-  oh-my-posh init pwsh --config "$PROFILE_DIR/hotstick.minimal.omp.json" | Invoke-Expression
+  oh-my-posh init pwsh --config "$PROFILE_DIR/theme.omp.json" | Invoke-Expression
 }
 
 # Remove background color directories when listing files
@@ -46,6 +46,10 @@ if (Get-Command -Name fnm -ErrorAction SilentlyContinue) {
 # pnpm
 if (Get-Command -Name pnpm -ErrorAction SilentlyContinue) {
   pnpm completion pwsh | Out-String | Invoke-Expression
+}
+
+if (Test-Path -Path "$env:USERPROFILE\.local\bin" -PathType Container) {
+  $env:Path = "$env:USERPROFILE\.local\bin;$env:Path"
 }
 
 ############################################
