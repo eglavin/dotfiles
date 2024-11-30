@@ -29,11 +29,12 @@ git clone https://github.com/eglavin/dotfiles.git ~/dotfiles
 ~/dotfiles/scripts/create-symlinks.ps1
 ```
 
-Optional enhancements: `Oh-My-Posh` and `Posh-Git`. Which can be installed using the following commands:
+Optional enhancements: Which can be installed using the following commands:
 
 ```ps1
 winget install --id=JanDeDobbeleer.OhMyPosh
 Install-Module -Name "posh-git" -Scope CurrentUser -Force
+Install-Module -Name Microsoft.WinGet.Client -Scope CurrentUser -Force
 ```
 
 Using oh-my-posh, we can use the following commands to setup some of the fonts used, which need to be installed from an administrator terminal:
