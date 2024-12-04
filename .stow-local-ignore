@@ -1,12 +1,12 @@
 .git
+ansible
+scripts
+windows
+
 .gitattributes
 .gitconfig_delta
 .gitignore
 .gitignore_global
 .gitmodules
 aliases.sh
-ansible
 README.md
-scripts
-windows-terminal
-winget

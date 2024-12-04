@@ -1,6 +1,6 @@
 [submodule "ansible"]
 	path = ansible
 	url = https://github.com/eglavin/ansible-playbook
-[submodule "winget"]
-	path = winget
+[submodule "windows/fresh-install"]
+	path = windows/fresh-install
 	url = https://github.com/eglavin/fresh-windows-install
