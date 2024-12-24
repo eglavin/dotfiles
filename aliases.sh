@@ -111,6 +111,19 @@ normalise_line_endings() {
   fi
 }
 
+e() {
+  if [[ $# -eq 0 ]] then
+    cd "$HOME"
+  elif [[ $# -eq 1 && ( -d "$1" || "$1" == "-" ) ]]; then
+    cd "$1"
+    ls -a
+  elif [[ -f "$1" || ! -e "$1" || $# -gt 1 ]]; then
+    $EDITOR "$@"
+  else
+    echo "e: case not accounted for"
+  fi
+}
+
 # Preview file in quick look
 ql() {
   qlmanage -p "$*" >&/dev/null &
