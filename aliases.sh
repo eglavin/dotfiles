@@ -112,7 +112,7 @@ normalise_line_endings() {
 }
 
 e() {
-  if [[ $# -eq 0 ]] then
+  if [[ $# -eq 0 ]]; then
     cd "$HOME"
   elif [[ $# -eq 1 && ( -d "$1" || "$1" == "-" ) ]]; then
     cd "$1"
