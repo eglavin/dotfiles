@@ -7,6 +7,7 @@ export GPG_TTY
 # oh-my-zsh
 if [ -d $HOME/.oh-my-zsh ]; then
   export ZSH=$HOME/.oh-my-zsh
+  export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
   export PYTHON_AUTO_VRUN=true
   export PYTHON_VENV_NAME=".venv"
