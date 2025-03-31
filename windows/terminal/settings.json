@@ -118,7 +118,7 @@
                 "commandline": "wsl",
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": false,
-                "name": "WSL (Default)",
+                "name": "WSL",
                 "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc",
                 "startingDirectory": "~"
             },
