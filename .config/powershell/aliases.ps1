@@ -1,8 +1,13 @@
 # Directory
 
 function .. { Set-Location .. }
-function cdl ([string] $dir = '.') {
-  Set-Location $dir
+function cdl {
+  param (
+    [string]$dir
+  )
+  if ($dir) {
+    Set-Location $dir
+  }
   Get-ChildItem | Sort-Object Name | Format-Wide -AutoSize
 }
 # Remove built in windows powershell alias if exists

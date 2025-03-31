@@ -1,7 +1,9 @@
 # Directory
 
 change_directory_list() {
-  cd $1 || (pwd)
+  if [ -n "$1" ]; then
+    cd $1
+  fi
   ls -CF
 }
 alias cdl=change_directory_list
