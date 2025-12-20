@@ -118,12 +118,12 @@ function which {
 # Docker
 
 function dce { docker exec -it $args bash }
-function dclogs { docker-compose logs -f }
-function dcpull { docker-compose pull }
+function dclogs { docker compose logs -f }
+function dcpull { docker compose pull }
 function dcrestart {
-  docker-compose stop
-  docker-compose up -d
+  docker compose stop
+  docker compose up -d
 }
-function dcrm { docker-compose rm -f -s }
-function dcstop { docker-compose stop }
-function dcup { docker-compose up -d }
+function dcrm { docker compose rm -f -s }
+function dcstop { docker compose stop }
+function dcup { docker compose up -d }

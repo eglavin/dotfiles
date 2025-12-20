@@ -139,13 +139,13 @@ connect_to_docker_container() {
 alias dce=connect_to_docker_container
 
 restart_docker_compose() {
-  docker-compose stop
-  docker-compose up -d
+  docker compose stop
+  docker compose up -d
 }
 alias dcrestart=restart_docker_compose
 
-alias dclogs="docker-compose logs -f"
-alias dcpull="docker-compose pull"
-alias dcrm="docker-compose rm -f -s"
-alias dcstop="docker-compose stop"
-alias dcup="docker-compose up -d"
+alias dclogs="docker compose logs -f"
+alias dcpull="docker compose pull"
+alias dcrm="docker compose rm -f -s"
+alias dcstop="docker compose stop"
+alias dcup="docker compose up -d"
