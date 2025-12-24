@@ -1,3 +1,5 @@
 .config/alacritty/alacritty.local.toml
 .vim/plugged/
 .vim/.netrwhist
+windows/terminal/
+!windows/terminal/settings.json

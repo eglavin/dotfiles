@@ -10,6 +10,11 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 # Get the current timestamp now so all backup files have the same timestamp
 $BackupTimestamp = [System.Math]::Truncate((Get-Date -Date ((Get-Date).ToUniversalTime()) -UFormat %s))
 
+if (-not $Run) {
+  Write-Host "Running in dry-run mode. Use the -Run flag to make changes." -ForegroundColor Yellow
+  Write-Host ""
+}
+
 function ConfirmAction {
   param (
     [string] $Title
@@ -73,9 +78,9 @@ function CreateLink {
 $SystemLinks = @(
   # Windows Terminal
   @{
-    Type   = "SymbolicLink";
-    Path   = "$env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json";
-    Target = "$HOME\dotfiles\windows\terminal\settings.json";
+    Type   = "Junction";
+    Path   = "$env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState";
+    Target = "$HOME\dotfiles\windows\terminal";
   }
 
   # Alacritty
