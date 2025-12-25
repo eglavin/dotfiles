@@ -1,10 +1,10 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions":
+    "actions": 
     [
         {
-            "command":
+            "command": 
             {
                 "action": "copy",
                 "singleLine": false
@@ -16,7 +16,7 @@
             "id": "User.paste"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "splitPane",
                 "split": "down",
@@ -25,7 +25,11 @@
             "id": "User.splitPane.10B260D2"
         },
         {
-            "command":
+            "command": "find",
+            "id": "User.find"
+        },
+        {
+            "command": 
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -34,11 +38,7 @@
             "id": "User.splitPane.A6751878"
         },
         {
-            "command": "find",
-            "id": "User.find"
-        },
-        {
-            "command":
+            "command": 
             {
                 "action": "splitPane",
                 "split": "right",
@@ -52,72 +52,105 @@
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "disableAnimations": false,
-    "initialCols": 130,
+    "initialCols": 140,
     "initialRows": 40,
-    "keybindings":
+    "keybindings": 
     [
-        {
-            "id": "User.splitPane.10B260D2",
-            "keys": "alt+shift+minus"
-        },
         {
             "id": "User.copy.644BA8F2",
             "keys": "ctrl+c"
         },
         {
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
+            "id": "User.splitPane.10B260D2",
+            "keys": "alt+shift+minus"
         },
         {
             "id": "User.paste",
             "keys": "ctrl+v"
         },
         {
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        },
+        {
             "id": "User.splitPane.A6751878",
             "keys": "alt+shift+d"
+        },
+        {
+            "id": null,
+            "keys": "alt+space"
         },
         {
             "id": "User.splitPane.FEF0D40B",
             "keys": "alt+shift+plus"
         }
     ],
-    "newTabMenu":
+    "newTabMenu": 
     [
         {
-            "type": "remainingProfiles"
+            "icon": null,
+            "profile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+            "type": "profile"
+        },
+        {
+            "icon": null,
+            "profile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+            "type": "profile"
+        },
+        {
+            "icon": null,
+            "profile": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+            "type": "profile"
+        },
+        {
+            "icon": null,
+            "profile": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+            "type": "profile"
+        },
+        {
+            "allowEmpty": false,
+            "entries": 
+            [
+                {
+                    "type": "remainingProfiles"
+                }
+            ],
+            "icon": null,
+            "inline": "never",
+            "name": "Other",
+            "type": "folder"
         }
     ],
-    "profiles":
+    "profiles": 
     {
-        "defaults":
+        "defaults": 
         {
-            "antialiasingMode": "cleartype",
+            "adjustIndistinguishableColors": "indexed",
             "closeOnExit": "graceful",
-            "colorScheme": "One Half Dark",
-            "cursorShape": "emptyBox",
-            "font":
+            "colorScheme": "Dimidium",
+            "font": 
             {
-                "face": "MesloLGL Nerd Font",
-                "size": 9
-            },
-            "opacity": 95,
-            "padding": "10",
-            "scrollbarState": "always",
-            "useAcrylic": true
+                "cellHeight": "1.4",
+                "face": "JetBrainsMono Nerd Font Mono",
+                "size": 10
+            }
         },
-        "list":
+        "list": 
         [
             {
+                "commandline": "%PROGRAMFILES%\\PowerShell\\7\\pwsh.exe",
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
+                "icon": "%PROGRAMFILES%\\PowerShell\\7\\assets\\Powershell_black.ico",
                 "name": "PowerShell",
                 "source": "Windows.Terminal.PowershellCore",
                 "startingDirectory": "C:\\Vault"
             },
             {
-                "commandline": "wsl",
+                "commandline": "%SystemRoot%\\System32\\wsl.exe",
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": false,
+                "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.scale-200.png",
                 "name": "WSL",
                 "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc",
                 "startingDirectory": "~"
@@ -141,14 +174,14 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "commandline": "%PROGRAMFILES%/Git/bin/bash.exe -i -l",
+                "commandline": "%PROGRAMFILES%\\Git\\bin\\bash.exe -i -l",
                 "guid": "{a85327a2-3c25-4b96-b916-c6b19b6c56bd}",
                 "hidden": false,
-                "icon": "%PROGRAMFILES%/Git/mingw64/share/git/git-for-windows.ico",
-                "name": "Git Bash",
-                "startingDirectory": "C:\\Vault"
+                "icon": "%PROGRAMFILES%\\Git\\mingw64\\share\\git\\git-for-windows.ico",
+                "name": "Git Bash"
             },
             {
+                "commandline": "%LOCALAPPDATA%\\Microsoft\\WindowsApps\\ubuntu.exe",
                 "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
                 "hidden": false,
                 "name": "Ubuntu",
