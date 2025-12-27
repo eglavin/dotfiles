@@ -152,7 +152,6 @@
                 "hidden": false,
                 "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.scale-200.png",
                 "name": "WSL",
-                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc",
                 "startingDirectory": "~"
             },
             {
