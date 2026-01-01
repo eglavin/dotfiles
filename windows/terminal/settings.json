@@ -190,13 +190,6 @@
                 "name": "Git Bash"
             },
             {
-                "commandline": "%LOCALAPPDATA%\\Microsoft\\WindowsApps\\ubuntu.exe",
-                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
-                "hidden": false,
-                "name": "Ubuntu",
-                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
-            },
-            {
                 "commandline": "C:\\msys64\\msys2_shell.cmd -defterm -no-start -mingw64",
                 "guid": "{27c1efb2-07d1-5d94-8e0f-f165ad31db4d}",
                 "icon": "C:\\msys64\\msys2.ico",
