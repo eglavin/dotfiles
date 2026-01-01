@@ -6,6 +6,10 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 
+user=$(logname)
+HOME=$(eval echo "~$user")
+
+
 # Backup the following files if they exist and are not symlinks:
 # "/etc/nixos/configuration.nix"
 # "/etc/nixos/hardware-configuration.nix"
