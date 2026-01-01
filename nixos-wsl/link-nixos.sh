@@ -6,8 +6,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 
-user=$(logname)
-HOME=$(eval echo "~$user")
+HOME=$(eval echo "~$SUDO_USER")
 
 
 # Backup the following files if they exist and are not symlinks:
@@ -22,10 +21,9 @@ if [ -f /etc/nixos/configuration.nix ]; then
 	else
 		rm /etc/nixos/configuration.nix
 	fi
-
-	ln -s $HOME/dotfiles/nixos-wsl/configuration.nix /etc/nixos/configuration.nix
 fi
 
+ln -s $HOME/dotfiles/nixos-wsl/configuration.nix /etc/nixos/configuration.nix
 
 if [ -f /etc/nixos/hardware-configuration.nix ]; then
 	if [ ! -L /etc/nixos/hardware-configuration.nix ]; then
@@ -34,8 +32,8 @@ if [ -f /etc/nixos/hardware-configuration.nix ]; then
 	else
 		rm /etc/nixos/hardware-configuration.nix
 	fi
-
-	ln -s $HOME/dotfiles/nixos-wsl/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
 fi
+
+ln -s $HOME/dotfiles/nixos-wsl/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
 
 echo "Symlinks created successfully."
