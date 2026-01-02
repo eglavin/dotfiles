@@ -14,9 +14,12 @@
   wsl.defaultUser = "eglavin";
 
   environment.systemPackages = with pkgs; [
+    curl
+    file
     git
     htop
     neovim
+    wget
   ];
 
   programs.neovim = {
