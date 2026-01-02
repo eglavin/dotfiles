@@ -9,12 +9,9 @@
   wsl.enable = true;
   wsl.defaultUser = "eglavin";
 
-  # Setup shell
-  programs.zsh.enable = true;
-  users.users.eglavin = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
-  };
+  environment.systemPackages = with pkgs; [
+    git
+  ];
 
   programs.neovim = {
     enable = true;
@@ -23,33 +20,33 @@
     vimAlias = true;
   };
 
-  environment.systemPackages = [
-    pkgs.git
-  ];
-
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.eglavin = { config, pkgs, ... }: {
-    # This must match your system stateVersion
-    home.stateVersion = "25.05";
 
-    # 3. Move your user-specific packages here
+  home-manager.users.eglavin = { config, pkgs, ... }: {
+
     home.packages = with pkgs; [
       htop
       fzf
       ripgrep
     ];
 
-    # 4. Example: Manage Git via Home Manager
     programs.git = {
       enable = true;
       settings.user.name = "Eanna Glavin";
       settings.user.email = "29385958+eglavin@users.noreply.github.com";
     };
 
-    programs.zsh.enable = true;
+    programs.zsh = {
+      enable = true;
+      ohMyZsh = {
+        enable = true;
+        theme = "agnoster";
+        plugins = [ "git" "z" "zsh-autosuggestions" "python" "virtualenv" ];
+      };
+    };
 
-    home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.zshrc";
+    home.stateVersion = "25.05";
   };
 
   system.stateVersion = "25.05";
