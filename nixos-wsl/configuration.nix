@@ -48,4 +48,20 @@
   home-manager.users.eglavin = import ./home.nix;
 
   system.stateVersion = "25.05";
+
+  # https://github.com/LGUG2Z/nixos-wsl-starter/blob/780c583f22046e238306d24c99cf09cd02d8f1aa/wsl.nix#L70
+  systemd.user = {
+    paths.vscode-remote-workaround = {
+      wantedBy = ["default.target"];
+      pathConfig.PathChanged = "%h/.vscode-server/bin";
+    };
+    services.vscode-remote-workaround.script = ''
+      for i in ~/.vscode-server/bin/*; do
+        if [ -e $i/node ]; then
+          echo "Fixing vscode-server in $i..."
+          ln -sf ${pkgs.nodejs_18}/bin/node $i/node
+        fi
+      done
+    '';
+  };
 }
