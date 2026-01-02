@@ -27,7 +27,7 @@
     stdenv.cc.cc
     zlib
     openssl
-  ]
+  ];
 
   programs.neovim = {
     enable = true;
