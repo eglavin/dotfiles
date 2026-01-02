@@ -30,10 +30,10 @@
       update = "sudo nixos-rebuild switch";
     };
 
-    ohMyZsh = {
+    oh-my-zsh = {
       enable = true;
       theme = "agnoster";
-      plugins = [ "git" "z" "zsh-autosuggestions" "python" "virtualenv" ];
+      plugins = [ "git" "z" "python" "virtualenv" ];
     };
   };
 }

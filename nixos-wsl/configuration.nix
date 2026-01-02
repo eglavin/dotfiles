@@ -26,6 +26,13 @@
     vimAlias = true;
   };
 
+  programs.zsh.enable = true;
+
+  users.users.eglavin = {
+    isNormalUser = true;
+    shell = pkgs.zsh;
+  };
+
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.eglavin = import ./home.nix;
