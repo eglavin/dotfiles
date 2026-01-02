@@ -40,7 +40,7 @@
       if [ -f ~/dotfiles/aliases.sh ]; then
         source ~/dotfiles/aliases.sh
       fi
-    ''
+    '';
 
     oh-my-zsh = {
       enable = true;
