@@ -1,6 +1,7 @@
 .git
 ansible
 backup
+nixos-wsl
 scripts
 windows
 
