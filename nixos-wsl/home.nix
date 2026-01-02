@@ -9,11 +9,21 @@
   home.stateVersion = "25.05";
 
   home.packages = with pkgs; [
-    peazip
-    unzip
-
+    bat
+    btop
+    delta
+    eza
+    gdu
+    gping
+    lazygit
+    scc
     fzf
+    jq
+    nmap
+    peazip
     ripgrep
+    unzip
+    yq
   ];
 
   programs.git = {
