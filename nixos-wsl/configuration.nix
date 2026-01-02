@@ -10,8 +10,10 @@
     <home-manager/nixos>
   ];
 
-  wsl.enable = true;
-  wsl.defaultUser = "eglavin";
+  wsl = {
+    enable = true;
+    defaultUser = "eglavin";
+  };
 
   environment.systemPackages = with pkgs; [
     curl
@@ -22,12 +24,14 @@
     wget
   ];
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc
-    zlib
-    openssl
-  ];
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc
+      zlib
+      openssl
+    ];
+  };
 
   programs.neovim = {
     enable = true;
@@ -36,16 +40,21 @@
     vimAlias = true;
   };
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+  };
 
   users.users.eglavin = {
     isNormalUser = true;
     shell = pkgs.zsh;
   };
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.eglavin = import ./home.nix;
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+
+    users.eglavin = import ./home.nix;
+  };
 
   system.stateVersion = "25.05";
 }
