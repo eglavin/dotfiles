@@ -109,6 +109,13 @@ $SystemLinks = @(
     Target = "$HOME\dotfiles\.config\nvim";
   },
 
+  # mise
+  @{
+    Type   = "Junction";
+    Path   = "$HOME\.config\mise";
+    Target = "$HOME\dotfiles\.config\mise";
+  },
+
   # Git
   @{
     Type   = "SymbolicLink";
