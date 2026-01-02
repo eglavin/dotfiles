@@ -22,14 +22,25 @@
   programs.zsh = {
     enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
+
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    history.size = 10000;
+    history.ignoreAllDups = true;
+    history.path = "${config.xdg.configHome}/zsh/zsh_history";
+    history.ignorePatterns = ["rm *" "pkill *" "cp *"];
+
     shellAliases = {
-      ll = "ls -l";
       update = "sudo nixos-rebuild switch";
     };
+
+    initExtra = ''
+      if [ -f ~/dotfiles/aliases.sh ]; then
+        source ~/dotfiles/aliases.sh
+      fi
+    ''
 
     oh-my-zsh = {
       enable = true;
