@@ -56,6 +56,9 @@
       if [ -f ~/dotfiles/aliases.sh ]; then
         source ~/dotfiles/aliases.sh
       fi
+
+      # fnm
+      eval "$(fnm env --use-on-cd --shell zsh)"
     '';
 
     oh-my-zsh = {
