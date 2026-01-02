@@ -36,7 +36,7 @@
       update = "sudo nixos-rebuild switch";
     };
 
-    initExtra = ''
+    initContent = ''
       if [ -f ~/dotfiles/aliases.sh ]; then
         source ~/dotfiles/aliases.sh
       fi
