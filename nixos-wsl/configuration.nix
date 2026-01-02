@@ -43,8 +43,8 @@
     # 4. Example: Manage Git via Home Manager
     programs.git = {
       enable = true;
-      userName = "Eanna Glavin";
-      userEmail = "29385958+eglavin@users.noreply.github.com";
+      settings.user.name = "Eanna Glavin";
+      settings.user.email = "29385958+eglavin@users.noreply.github.com";
     };
 
     programs.zsh.enable = true;
