@@ -11,19 +11,22 @@
   home.packages = with pkgs; [
     bat
     btop
+    bun
     delta
     eza
+    fnm
+    fzf
     gdu
     gping
-    lazygit
-    scc
-    fzf
     jq
+    lazygit
     nmap
     peazip
     ripgrep
+    scc
     unzip
     yq
+    zoxide
   ];
 
   programs.git = {
