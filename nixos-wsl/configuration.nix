@@ -29,7 +29,7 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.eglavin = { pkgs, ... }: {
+  home-manager.users.eglavin = { config, pkgs, ... }: {
     # This must match your system stateVersion
     home.stateVersion = "25.05";
 
@@ -46,6 +46,10 @@
       userName = "Eanna Glavin";
       userEmail = "29385958+eglavin@users.noreply.github.com";
     };
+
+    programs.zsh.enable = true;
+
+    home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.zshrc";
   };
 
   system.stateVersion = "25.05";
