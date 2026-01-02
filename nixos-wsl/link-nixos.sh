@@ -11,7 +11,6 @@ HOME=$(eval echo "~$SUDO_USER")
 
 # Backup the following files if they exist and are not symlinks:
 # "/etc/nixos/configuration.nix"
-# "/etc/nixos/hardware-configuration.nix"
 # Then create symlinks to the corresponding files in the user's dotfiles directory.
 
 if [ -f /etc/nixos/configuration.nix ]; then
@@ -24,16 +23,5 @@ if [ -f /etc/nixos/configuration.nix ]; then
 fi
 
 ln -s $HOME/dotfiles/nixos-wsl/configuration.nix /etc/nixos/configuration.nix
-
-if [ -f /etc/nixos/hardware-configuration.nix ]; then
-	if [ ! -L /etc/nixos/hardware-configuration.nix ]; then
-		echo "Backing up existing /etc/nixos/hardware-configuration.nix to /etc/nixos/hardware-configuration.nix.bak"
-		mv /etc/nixos/hardware-configuration.nix /etc/nixos/hardware-configuration.nix.bak
-	else
-		rm /etc/nixos/hardware-configuration.nix
-	fi
-fi
-
-ln -s $HOME/dotfiles/nixos-wsl/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
 
 echo "Symlinks created successfully."
