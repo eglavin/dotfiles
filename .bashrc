@@ -99,6 +99,9 @@ fi
 # zoxide
 [ -f "$(command -v zoxide)" ] && eval "$(zoxide init bash)"
 
+# mise
+[ -f "$(command -v mise)" ] && eval "$(mise activate bash)"
+
 # fnm
 if [ -d $HOME/.local/share/fnm ]; then
   export PATH="$HOME/.local/share/fnm:$PATH"
