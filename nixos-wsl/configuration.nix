@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     <nixos-wsl/modules>
@@ -11,6 +15,8 @@
 
   environment.systemPackages = with pkgs; [
     git
+    htop
+    neovim
   ];
 
   programs.neovim = {
@@ -22,32 +28,7 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-
-  home-manager.users.eglavin = { config, pkgs, ... }: {
-
-    home.packages = with pkgs; [
-      htop
-      fzf
-      ripgrep
-    ];
-
-    programs.git = {
-      enable = true;
-      settings.user.name = "Eanna Glavin";
-      settings.user.email = "29385958+eglavin@users.noreply.github.com";
-    };
-
-    programs.zsh = {
-      enable = true;
-      ohMyZsh = {
-        enable = true;
-        theme = "agnoster";
-        plugins = [ "git" "z" "zsh-autosuggestions" "python" "virtualenv" ];
-      };
-    };
-
-    home.stateVersion = "25.05";
-  };
+  home-manager.users.eglavin = import ./home.nix;
 
   system.stateVersion = "25.05";
 }
