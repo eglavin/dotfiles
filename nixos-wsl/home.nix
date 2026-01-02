@@ -24,15 +24,65 @@
     peazip
     ripgrep
     scc
+    tree
     unzip
     yq
+    zip
     zoxide
   ];
 
   programs.git = {
     enable = true;
-    settings.user.name = "Eanna Glavin";
-    settings.user.email = "29385958+eglavin@users.noreply.github.com";
+    settings = {
+      user = {
+        name = "Eanna Glavin";
+        email = "29385958+eglavin@users.noreply.github.com";
+      };
+      init = {
+        defaultBranch = "main";
+      };
+      core = {
+        eol = "native";
+        safecrlf = "warn";
+        autocrlf = "input";
+        longpaths = true;
+        whitespace = "space-before-tab,-indent-with-non-tab,trailing-space";
+        pager = "delta";
+      };
+      apply = {
+        whitespace = "fix";
+      };
+      push = {
+        autoSetupRemote = true;
+        default = "current";
+      };
+      merge = {
+        autoStash = true;
+        log = true;
+        conflictStyle = "diff3";
+      };
+      rebase = {
+        autoStash = true;
+      };
+      pull = {
+        rebase = true;
+      };
+      diff = {
+        renames = "copies";
+        colorMoved = "default";
+      };
+      pager = {
+        branch = "false";
+      };
+      interactive = {
+        diffFilter = "delta --color-only";
+      };
+      delta = {
+        sideBySide = true;
+        lineNumbers = true;
+        navigate = true;
+      };
+    };
   };
 
   programs.zsh = {
@@ -66,5 +116,15 @@
       theme = "agnoster";
       plugins = [ "git" "z" "python" "virtualenv" ];
     };
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
   };
 }
