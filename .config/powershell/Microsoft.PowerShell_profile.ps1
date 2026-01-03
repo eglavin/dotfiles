@@ -65,9 +65,9 @@ if (Get-Command -Name zoxide -ErrorAction SilentlyContinue) {
 }
 
 # mise
-if (Get-Command -Name mise -ErrorAction SilentlyContinue) {
-  mise activate pwsh | Out-String | Invoke-Expression
-}
+# if (Get-Command -Name mise -ErrorAction SilentlyContinue) {
+  # mise activate pwsh | Out-String | Invoke-Expression
+# }
 
 # fnm
 if (Get-Command -Name fnm -ErrorAction SilentlyContinue) {
