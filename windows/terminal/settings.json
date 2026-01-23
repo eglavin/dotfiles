@@ -18,11 +18,27 @@
         {
             "command": 
             {
+                "action": "swapPane",
+                "direction": "down"
+            },
+            "id": "User.swapPane.F747588A"
+        },
+        {
+            "command": 
+            {
                 "action": "splitPane",
                 "split": "down",
                 "splitMode": "duplicate"
             },
             "id": "User.splitPane.10B260D2"
+        },
+        {
+            "command": 
+            {
+                "action": "swapPane",
+                "direction": "up"
+            },
+            "id": "User.swapPane.6CD791B"
         },
         {
             "command": "find",
@@ -45,6 +61,22 @@
                 "splitMode": "duplicate"
             },
             "id": "User.splitPane.FEF0D40B"
+        },
+        {
+            "command": 
+            {
+                "action": "swapPane",
+                "direction": "right"
+            },
+            "id": "User.swapPane.87C324ED"
+        },
+        {
+            "command": 
+            {
+                "action": "swapPane",
+                "direction": "left"
+            },
+            "id": "User.swapPane.2A0DA8E0"
         }
     ],
     "alwaysShowTabs": true,
@@ -88,6 +120,22 @@
         {
             "id": "User.splitPane.FEF0D40B",
             "keys": "alt+shift+plus"
+        },
+        {
+            "id": "User.swapPane.6CD791B",
+            "keys": "ctrl+alt+up"
+        },
+        {
+            "id": "User.swapPane.F747588A",
+            "keys": "ctrl+alt+down"
+        },
+        {
+            "id": "User.swapPane.87C324ED",
+            "keys": "ctrl+alt+right"
+        },
+        {
+            "id": "User.swapPane.2A0DA8E0",
+            "keys": "ctrl+alt+left"
         }
     ],
     "newTabMenu": 
