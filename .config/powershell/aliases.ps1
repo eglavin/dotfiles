@@ -20,6 +20,45 @@ function l { Get-ChildItem -Force $args | Sort-Object Name }
 function la { Get-ChildItem -Force $args | Sort-Object Name }
 function lt { Get-ChildItem -Force $args | Sort-Object LastWriteTime -Descending }
 
+function Get-FolderSize {
+  [CmdletBinding()]
+  param(
+    [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+    [string]$Path
+  )
+
+  if (Test-Path $Path) {
+    # Calculate total bytes by summing the length of all files recursively
+    $totalBytes = (Get-ChildItem -Path $Path -Recurse -File -ErrorAction SilentlyContinue |
+      Measure-Object -Property Length -Sum).Sum
+
+    # If the folder is empty, $totalBytes will be null
+    if ($null -eq $totalBytes) { $totalBytes = 0 }
+
+    # Define the human-readable conversion logic
+    $units = "B", "KB", "MB", "GB", "TB"
+    $index = 0
+    $size = $totalBytes
+
+    while ($size -ge 1024 -and $index -lt $units.Length - 1) {
+      $size /= 1024
+      $index++
+    }
+
+    # Return a custom object for easy manipulation later
+    return [PSCustomObject]@{
+      Path       = $Path
+      Size       = "{0:N2}" -f $size
+      Unit       = $units[$index]
+      Formatted  = ("{0:N2} {1}" -f $size, $units[$index])
+      TotalBytes = $totalBytes
+    }
+  }
+  else {
+    Write-Warning "Path '$Path' does not exist."
+  }
+}
+
 # Git
 
 function gitwhoami {
@@ -69,8 +108,8 @@ function ci. {
 function GetVisualStudioLocation {
   # Determining Installed Visual Studio Path for 2017 https://stackoverflow.com/a/54729540
   return Get-ItemPropertyValue `
-		-Path "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\devenv.exe" `
-		-Name "(Default)";
+    -Path "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\devenv.exe" `
+    -Name "(Default)";
 }
 function vs { Start-Process (GetVisualStudioLocation) . }
 function vsp. {
