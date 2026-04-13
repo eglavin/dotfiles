@@ -1,5 +1,5 @@
 [tools]
-node = { version = "24", postinstall = "corepack enable && corepack use pnpm@latest-10" }
+node = { version = "24", postinstall = "npm i -g corepack && corepack use pnpm@latest-10" }
 bun = "latest"
 deno = "latest"
 python = "latest"
@@ -15,4 +15,4 @@ python.uv_venv_auto = true
 windows_shim_mode = "symlink"
 
 [env]
-UV_PYTHON = { value = "{{ tools.python.path }}", tools = true }
+# UV_PYTHON = { value = "{{ tools.python.path }}", tools = true }
