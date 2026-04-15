@@ -1,5 +1,5 @@
 [tools]
-node = { version = "24", postinstall = "npm i -g corepack && corepack use pnpm@latest-10" }
+node = { version = "24", postinstall = "npm i -g corepack && corepack prepare pnpm@latest-10" }
 bun = "latest"
 deno = "latest"
 python = "latest"
