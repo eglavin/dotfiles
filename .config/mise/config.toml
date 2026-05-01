@@ -10,7 +10,7 @@ java = "temurin"
 go = "latest"
 
 [settings]
-idiomatic_version_file_enable_tools = ["node", "pnpm"]
+idiomatic_version_file_enable_tools = ["node"]
 python.uv_venv_auto = true
 windows_shim_mode = "symlink"
 
