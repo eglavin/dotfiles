@@ -1,5 +1,5 @@
 [tools]
-node = { version = "24", postinstall = "npm i -g corepack && corepack prepare pnpm@latest-10" }
+node = { version = "24", postinstall = "npm i -g corepack && corepack prepare pnpm@latest-11" }
 bun = "latest"
 deno = "latest"
 python = "latest"
@@ -15,3 +15,4 @@ windows_shim_mode = "symlink"
 
 [env]
 # UV_PYTHON = { value = "{{ tools.python.path }}", tools = true }
+_.path = ['{{config_root}}/node_modules/.bin']

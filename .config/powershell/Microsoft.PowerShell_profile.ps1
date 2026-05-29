@@ -65,19 +65,8 @@ if (Get-Command -Name zoxide -ErrorAction SilentlyContinue) {
 }
 
 # mise
-# if (Get-Command -Name mise -ErrorAction SilentlyContinue) {
-  # mise activate pwsh | Out-String | Invoke-Expression
-# }
-
-# fnm
-if (Get-Command -Name fnm -ErrorAction SilentlyContinue) {
-  fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
-  fnm completions --shell powershell | Out-String | Invoke-Expression
-}
-
-# pnpm
-if (Test-Path -Path "$PROFILE_DIR\.pnpm-tab-completion.ps1" -PathType Leaf) {
-  . "$PROFILE_DIR\.pnpm-tab-completion.ps1"
+if (Get-Command -Name mise -ErrorAction SilentlyContinue) {
+  mise activate pwsh | Out-String | Invoke-Expression
 }
 
 ############################################
