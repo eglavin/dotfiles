@@ -1,13 +1,5 @@
 # Directory
 
-change_directory_list() {
-  if [ -n "$1" ]; then
-    cd $1
-  fi
-  ls -CF
-}
-alias cdl=change_directory_list
-
 if [ -f "$(command -v eza)" ]; then
   alias ls="eza"
   alias ll="eza -l"
@@ -69,6 +61,15 @@ else
   export VISUAL=vim
   export EDITOR=vim
 fi
+
+function open_vim() {
+  if [ -z "$*" ]; then
+    vim .
+  else
+    vim "$*"
+  fi
+}
+alias v.=open_vim
 
 function open_code() {
   if [ -z "$*" ]; then

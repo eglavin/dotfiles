@@ -102,18 +102,4 @@ fi
 # mise
 [ -f "$(command -v mise)" ] && eval "$(mise activate bash)"
 
-# fnm
-if [ -d $HOME/.local/share/fnm ]; then
-  export PATH="$HOME/.local/share/fnm:$PATH"
-fi
-if [ -f "$(command -v fnm)" ]; then
-  eval "$(fnm env --use-on-cd --shell bash)"
-  eval "$(fnm completions --shell bash)"
-fi
-
-# cargo
-if [ -d $HOME/.cargo ]; then
-  . "$HOME/.cargo/env"
-fi
-
 ############################################

@@ -93,27 +93,4 @@ fi
 # mise
 [ -f "$(command -v mise)" ] && eval "$(mise activate zsh)"
 
-# fnm
-if [ -d $HOME/.local/share/fnm ]; then
-  export PATH="$HOME/.local/share/fnm:$PATH"
-
-  eval "$(fnm env --use-on-cd --shell zsh)"
-  eval "$(fnm completions --shell zsh)"
-fi
-
-# pnpm
-[ -f $HOME/.pnpm-tab-completion.sh ] && source $HOME/.pnpm-tab-completion.sh
-
-# bun
-if [ -f $HOME/.bun/_bun ]; then
-  source $HOME/.bun/_bun
-  export BUN_INSTALL="$HOME/.bun"
-  export PATH="$BUN_INSTALL/bin:$PATH"
-fi
-
-# cargo
-if [ -d $HOME/.cargo ]; then;
-  . "$HOME/.cargo/env"
-fi
-
 ############################################
