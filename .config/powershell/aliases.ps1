@@ -1,15 +1,6 @@
 # Directory
 
 function .. { Set-Location .. }
-function cdl {
-  param (
-    [string]$dir
-  )
-  if ($dir) {
-    Set-Location $dir
-  }
-  Get-ChildItem | Sort-Object Name | Format-Wide -AutoSize
-}
 # Remove built in windows powershell alias if exists
 if (Get-Alias -Name ls -ErrorAction SilentlyContinue) {
   Remove-Item -force alias:ls
@@ -88,6 +79,14 @@ function UseNvimOrVim {
 }
 Set-Alias vi UseNvimOrVim -Option AllScope
 Set-Alias vim UseNvimOrVim -Option AllScope
+function v. {
+  if ($args) {
+    vim $args
+  }
+  else {
+    vim .
+  }
+}
 
 function c. {
   if ($args) {
@@ -113,12 +112,15 @@ function GetVisualStudioLocation {
 }
 function vs { Start-Process (GetVisualStudioLocation) . }
 function vsp. {
-  $sln = Get-ChildItem *.sln
-  if (!$sln) {
+  $foundSolutionFile = Get-ChildItem *.slnx,*.sln
+  if ($foundSolutionFile.Count -eq 0) {
     Write-Error "No solution file found"
   }
   else {
-    Start-Process (GetVisualStudioLocation) $($sln)[0]
+    if ($foundSolutionFile.Count -gt 1) {
+      Write-Warning "Multiple solution files found. Opening the first one: $($foundSolutionFile[0].Name)"
+    }
+    Start-Process (GetVisualStudioLocation) $($foundSolutionFile)[0]
   }
 }
 
@@ -147,7 +149,6 @@ function pncp {
   pnpm run test run
 }
 Set-Alias pn pnpm -Option AllScope
-Set-Alias g git -Option AllScope
 
 function which {
   Get-Command -Name $args -ErrorAction SilentlyContinue |
