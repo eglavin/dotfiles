@@ -165,5 +165,6 @@ function dcrestart {
   docker compose up -d
 }
 function dcrm { docker compose rm -f -s }
+function dcdownrm { docker compose down -v --rmi all --remove-orphans }
 function dcstop { docker compose stop }
 function dcup { docker compose up -d }

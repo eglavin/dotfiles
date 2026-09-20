@@ -148,5 +148,6 @@ alias dcrestart=restart_docker_compose
 alias dclogs="docker compose logs -f"
 alias dcpull="docker compose pull"
 alias dcrm="docker compose rm -f -s"
+alias dcdownrm="docker compose down -v --rmi all --remove-orphans"
 alias dcstop="docker compose stop"
 alias dcup="docker compose up -d"
