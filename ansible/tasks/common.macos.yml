@@ -1,0 +1,47 @@
+---
+- name: Refresh homebrew
+  community.general.homebrew:
+    update_homebrew: true
+    upgrade_all: true
+
+- name: Install homebrew packages
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - bat
+    - btop
+    - bun
+    - curl
+    - delta
+    - eza
+    - file
+    - fnm
+    - fzf
+    - gdu
+    - git
+    - gping
+    - htop
+    - jq
+    - lazygit
+    - neovim
+    - nmap
+    - ripgrep
+    - scc
+    - stow
+    - tree
+    - unzip
+    - yq
+    - wget
+    - zip
+    - zoxide
+
+- name: Setup Node.js using fnm
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail
+      eval "$(/opt/homebrew/bin/fnm env)"
+      /opt/homebrew/bin/fnm install 24 --corepack-enabled
+      /opt/homebrew/bin/fnm default 24
+    executable: /bin/bash
+  changed_when: false

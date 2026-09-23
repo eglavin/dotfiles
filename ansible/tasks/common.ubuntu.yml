@@ -1,0 +1,77 @@
+---
+- name: Refresh apt
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+  become: true
+
+- name: Install apt packages
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - bat
+    - btop
+    - build-essential
+    - curl
+    - file
+    - git
+    - htop
+    - nmap
+    - procps
+    - software-properties-common
+    - stow
+    - unzip
+    - wget
+    - zsh
+  become: true
+
+- name: Set zsh is the default shell
+  ansible.builtin.user:
+    name: "{{ ansible_user }}"
+    shell: "/usr/bin/zsh"
+  become: true
+
+- name: Install zoxide
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail
+      curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+    executable: /bin/bash
+    creates: /home/{{ ansible_user_id }}/.local/bin/zoxide
+
+- name: Install linuxbrew
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail
+      curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+    executable: /bin/bash
+    creates: /home/linuxbrew/.linuxbrew/bin/brew
+
+- name: Update linuxbrew
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail
+      /home/linuxbrew/.linuxbrew/bin/brew update
+      /home/linuxbrew/.linuxbrew/bin/brew upgrade
+    executable: /bin/bash
+  changed_when: false
+
+- name: Install linuxbrew packages
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail
+      /home/linuxbrew/.linuxbrew/bin/brew install {{ item }}
+    executable: /bin/bash
+  with_items:
+    - delta
+    - eza
+    - fzf
+    - gdu
+    - gping
+    - lazygit
+    - neovim
+    - ripgrep
+    - scc
+    - yq
+  changed_when: false
