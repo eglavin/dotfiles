@@ -1,9 +1,3 @@
-[submodule "ansible"]
-	path = ansible
-	url = https://github.com/eglavin/ansible-playbook
-[submodule "windows/fresh-install"]
-	path = windows/fresh-install
-	url = https://github.com/eglavin/fresh-windows-install
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = https://github.com/eglavin/dotfiles-neovim.git
