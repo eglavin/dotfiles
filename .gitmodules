@@ -1,3 +1,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = https://github.com/eglavin/dotfiles-neovim.git
+[submodule "windows/fresh-install/PS-SFTA"]
+	path = windows/fresh-install/PS-SFTA
+	url = https://github.com/DanysysTeam/PS-SFTA.git
