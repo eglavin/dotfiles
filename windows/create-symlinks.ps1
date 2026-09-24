@@ -1,5 +1,6 @@
 param (
-  [switch] $Run
+  [switch] $Run,
+  [switch] $Override
 )
 
 if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
@@ -46,7 +47,7 @@ function CreateLink {
   if (Test-Path $Path) {
     $PathIsLink = [bool]((Get-Item $Path -Force -ea SilentlyContinue).Attributes -band [IO.FileAttributes]::ReparsePoint)
     if ($PathIsLink -eq $false) {
-      if (ConfirmAction -Title "Would you like to backup $($Path)?") {
+      if ($Override -or (ConfirmAction -Title "Would you like to backup $($Path)?")) {
         $BackupPath = "$Path.$BackupTimestamp.bak"
 
         Write-Host "Moving file $Path -> $BackupPath"
@@ -58,6 +59,14 @@ function CreateLink {
       }
       else {
         Write-Host "Skipping $Path"
+      }
+    }
+    elseif ($Override) {
+      Write-Host "Recreating link $Path -> $Target"
+
+      if ($Run) {
+        Remove-Item -Path $Path -Force
+        New-Item -Path $Path -Target $Target -ItemType $Type
       }
     }
     else {
