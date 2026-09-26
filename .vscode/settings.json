@@ -1,5 +1,10 @@
 {
+	"files.associations": {
+		"ansible/**/*.yml": "ansible"
+	},
 	"files.exclude": {
 		"**/.git": false
-	}
+	},
+	"ansible.ansible.path": "ansible",
+	"ansible.python.interpreterPath": "python3"
 }
