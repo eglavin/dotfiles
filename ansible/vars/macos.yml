@@ -17,7 +17,7 @@ homebrew_packages:
   - name: lazygit
     tags: [optional]
   - name: mise
-    tags: [optional]
+    tags: [optional, mise]
   - name: neovim
     tags: [optional, neovim]
   - name: nmap

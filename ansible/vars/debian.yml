@@ -50,7 +50,7 @@ github_release_tools:
   - repo: jdx/mise
     bin: mise
     asset: '^mise-v.*-linux-{{ arch_node }}\.tar\.gz$'
-    tags: [optional]
+    tags: [optional, mise]
   - repo: neovim/neovim
     bin: nvim
     asset: '^nvim-linux-{{ arch_mixed }}\.tar\.gz$'
