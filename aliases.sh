@@ -49,6 +49,18 @@ git_open_remote() {
 }
 alias gitor=git_open_remote
 
+dotfiles_pull() {
+  local dir="$HOME/dotfiles"
+  local before=$(git -C "$dir" rev-parse HEAD)
+  git -C "$dir" pull || return 1
+  if [ "$before" != "$(git -C "$dir" rev-parse HEAD)" ]; then
+    git -C "$dir" submodule update --init --recursive
+  else
+    echo "dotfiles already up to date"
+  fi
+}
+alias dotpull=dotfiles_pull
+
 # Editor
 
 if [ -f "$(command -v nvim)" ]; then

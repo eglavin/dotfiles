@@ -66,6 +66,18 @@ function gitor {
     Start-Process $url
   }
 }
+function dotpull {
+  $dir = Join-Path $HOME "dotfiles"
+  $before = git -C $dir rev-parse HEAD
+  git -C $dir pull
+  if ($LASTEXITCODE -ne 0) { return }
+  if ($before -ne (git -C $dir rev-parse HEAD)) {
+    git -C $dir submodule update --init --recursive
+  }
+  else {
+    Write-Host "dotfiles already up to date"
+  }
+}
 
 # Editor
 
