@@ -15,14 +15,14 @@ apt_packages:
   - wget
   - zsh
 
-github_release_root: "{{ ansible_user_dir }}/.local/opt"
+github_release_root: "{{ ansible_facts['user_dir'] }}/.local/opt"
 
 # Projects name architectures inconsistently: rust targets use x86_64/aarch64,
 # Go projects use amd64/arm64, Node-style projects use x64/arm64, and some mix them
-arch_rust: "{{ ansible_facts.architecture }}"
-arch_go: "{{ {'x86_64': 'amd64', 'aarch64': 'arm64'}[ansible_facts.architecture] }}"
-arch_node: "{{ {'x86_64': 'x64', 'aarch64': 'arm64'}[ansible_facts.architecture] }}"
-arch_mixed: "{{ {'x86_64': 'x86_64', 'aarch64': 'arm64'}[ansible_facts.architecture] }}"
+arch_rust: "{{ ansible_facts['architecture'] }}"
+arch_go: "{{ {'x86_64': 'amd64', 'aarch64': 'arm64'}[ansible_facts['architecture']] }}"
+arch_node: "{{ {'x86_64': 'x64', 'aarch64': 'arm64'}[ansible_facts['architecture']] }}"
+arch_mixed: "{{ {'x86_64': 'x86_64', 'aarch64': 'arm64'}[ansible_facts['architecture']] }}"
 
 # apt versions of these are too old (or missing) on Ubuntu LTS, so use upstream release binaries.
 # `asset` is a regex matched against the release's download filenames.

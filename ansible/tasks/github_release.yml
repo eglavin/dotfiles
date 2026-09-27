@@ -63,7 +63,7 @@
 - name: "Link {{ tool.bin }} into ~/.local/bin"
   ansible.builtin.file:
     src: "{{ (release_bin.files | first).path }}"
-    dest: "{{ ansible_user_dir }}/.local/bin/{{ tool.bin }}"
+    dest: "{{ ansible_facts['user_dir'] }}/.local/bin/{{ tool.bin }}"
     state: link
     force: true
 

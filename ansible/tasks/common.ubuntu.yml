@@ -2,11 +2,10 @@
 - name: Load Ubuntu variables
   ansible.builtin.include_vars: "{{ playbook_dir }}/vars/ubuntu.yml"
 
-- name: Refresh and upgrade apt packages
+- name: Refresh apt
   ansible.builtin.apt:
     update_cache: true
     cache_valid_time: 3600
-    upgrade: safe
   become: true
 
 - name: Install apt packages
@@ -17,13 +16,13 @@
 
 - name: Set zsh is the default shell
   ansible.builtin.user:
-    name: "{{ ansible_user_id }}"
+    name: "{{ ansible_facts['user_id'] }}"
     shell: "/usr/bin/zsh"
   become: true
 
 - name: Create ~/.local/bin
   ansible.builtin.file:
-    path: "{{ ansible_user_dir }}/.local/bin"
+    path: "{{ ansible_facts['user_dir'] }}/.local/bin"
     state: directory
     mode: "0755"
 
@@ -35,5 +34,11 @@
     label: "{{ tool.repo }}"
 
 - name: Install mise tools
-  ansible.builtin.command: "{{ ansible_user_dir }}/.local/bin/mise install --yes"
+  ansible.builtin.command: "{{ ansible_facts['user_dir'] }}/.local/bin/mise install --yes"
   changed_when: false
+
+# Keep this last: the upgrade can replace ansible itself, which breaks any tasks run after it
+- name: Upgrade apt packages
+  ansible.builtin.apt:
+    upgrade: safe
+  become: true
