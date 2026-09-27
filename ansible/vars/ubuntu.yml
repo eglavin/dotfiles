@@ -48,6 +48,9 @@ github_release_tools:
   - repo: BurntSushi/ripgrep
     bin: rg
     asset: '^ripgrep-.*-{{ arch_rust }}-unknown-linux-musl\.tar\.gz$'
+  - repo: tree-sitter/tree-sitter
+    bin: tree-sitter
+    asset: '^tree-sitter-cli-linux-{{ arch_node }}\.zip$'
   - repo: ajeetdsouza/zoxide
     bin: zoxide
     asset: '^zoxide-.*-{{ arch_rust }}-unknown-linux-musl\.tar\.gz$'

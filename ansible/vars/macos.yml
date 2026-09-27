@@ -17,6 +17,7 @@ homebrew_packages:
   - ripgrep
   - stow
   - tree
+  - tree-sitter-cli
   - unzip
   - wget
   - zip
