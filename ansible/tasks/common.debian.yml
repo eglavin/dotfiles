@@ -1,6 +1,6 @@
 ---
-- name: Load Ubuntu variables
-  ansible.builtin.include_vars: "{{ playbook_dir }}/vars/ubuntu.yml"
+- name: Load Debian variables
+  ansible.builtin.include_vars: "{{ playbook_dir }}/vars/debian.yml"
 
 - name: Refresh apt
   ansible.builtin.apt:
@@ -20,6 +20,14 @@
     state: present
   become: true
   tags: [never, optional]
+
+# Provides add-apt-repository for PPAs, which only exist on Ubuntu (and Debian 13 dropped the package)
+- name: Install Ubuntu apt packages
+  ansible.builtin.apt:
+    name: software-properties-common
+    state: present
+  become: true
+  when: ansible_facts["distribution"] == "Ubuntu"
 
 - name: Set zsh is the default shell
   ansible.builtin.user:

@@ -12,7 +12,13 @@ else
 
 	apt update
 	apt upgrade --yes
-	apt install software-properties-common --yes
-	apt-add-repository --yes --update ppa:ansible/ansible
+
+	. /etc/os-release
+	# The Ansible PPA only targets Ubuntu; Debian's own package is recent enough for this playbook
+	if [ "$ID" = "ubuntu" ]; then
+		apt install software-properties-common --yes
+		apt-add-repository --yes --update ppa:ansible/ansible
+	fi
+
 	apt install ansible --yes
 fi
