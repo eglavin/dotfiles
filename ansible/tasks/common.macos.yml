@@ -9,16 +9,11 @@
 
 - name: Install homebrew packages
   community.general.homebrew:
-    name: "{{ homebrew_packages }}"
+    name: "{{ homebrew_packages | enabled_items(active_tags) | map(attribute='name') }}"
     state: present
-
-- name: Install optional homebrew packages
-  community.general.homebrew:
-    name: "{{ optional_homebrew_packages }}"
-    state: present
-  tags: [never, optional]
 
 - name: Install mise tools
   ansible.builtin.command: /opt/homebrew/bin/mise install --yes
   changed_when: false
-  tags: [never, mise_tools]
+  tags: mise_tools
+  when: "'mise_tools' in active_tags"

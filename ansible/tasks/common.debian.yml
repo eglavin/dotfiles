@@ -10,16 +10,9 @@
 
 - name: Install apt packages
   ansible.builtin.apt:
-    name: "{{ apt_packages }}"
+    name: "{{ apt_packages | enabled_items(active_tags) | map(attribute='name') }}"
     state: present
   become: true
-
-- name: Install optional apt packages
-  ansible.builtin.apt:
-    name: "{{ optional_apt_packages }}"
-    state: present
-  become: true
-  tags: [never, optional]
 
 # Provides add-apt-repository for PPAs, which only exist on Ubuntu (and Debian 13 dropped the package)
 - name: Install Ubuntu apt packages
@@ -43,27 +36,16 @@
 
 - name: Install GitHub release tools
   ansible.builtin.include_tasks: github_release.yml
-  loop: "{{ github_release_tools }}"
+  loop: "{{ github_release_tools | enabled_items(active_tags) }}"
   loop_control:
     loop_var: tool
     label: "{{ tool.repo }}"
-
-# Tags on a dynamic include only select the include itself; `apply` passes them to the included tasks
-- name: Install optional GitHub release tools
-  ansible.builtin.include_tasks:
-    file: github_release.yml
-    apply:
-      tags: [optional]
-  loop: "{{ optional_github_release_tools }}"
-  loop_control:
-    loop_var: tool
-    label: "{{ tool.repo }}"
-  tags: [never, optional]
 
 - name: Install mise tools
   ansible.builtin.command: "{{ ansible_facts['user_dir'] }}/.local/bin/mise install --yes"
   changed_when: false
-  tags: [never, mise_tools]
+  tags: mise_tools
+  when: "'mise_tools' in active_tags"
 
 # Keep this last: the upgrade can replace ansible itself, which breaks any tasks run after it
 - name: Upgrade apt packages

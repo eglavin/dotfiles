@@ -1,22 +1,25 @@
 ---
-apt_packages:
-  - bat
-  - build-essential
-  - curl
-  - file
-  - git
-  - htop
-  - procps
-  - stow
-  - tree
-  - unzip
-  - wget
-  - zip
-  - zsh
+# Items with `tags` below are only installed when one of their tags is passed with --tags
+active_tags: "{{ (ansible_run_tags | list) | difference(ansible_skip_tags | list) }}"
 
-optional_apt_packages:
-  - btop
-  - nmap
+apt_packages:
+  - name: bat
+  - name: btop
+    tags: [optional]
+  - name: build-essential
+  - name: curl
+  - name: file
+  - name: git
+  - name: htop
+  - name: nmap
+    tags: [optional]
+  - name: procps
+  - name: stow
+  - name: tree
+  - name: unzip
+  - name: wget
+  - name: zip
+  - name: zsh
 
 github_release_root: "{{ ansible_facts['user_dir'] }}/.local/opt"
 
@@ -30,32 +33,35 @@ arch_mixed: "{{ {'x86_64': 'x86_64', 'aarch64': 'arm64'}[ansible_facts['architec
 # apt versions of these are too old (or missing) on Debian and Ubuntu LTS, so use upstream release binaries.
 # `asset` is a regex matched against the release's download filenames.
 github_release_tools:
+  - repo: dandavison/delta
+    bin: delta
+    asset: '^delta-.*-{{ arch_rust }}-unknown-linux-gnu\.tar\.gz$'
+    tags: [optional]
   - repo: eza-community/eza
     bin: eza
     asset: '^eza_{{ arch_rust }}-unknown-linux-gnu\.tar\.gz$'
   - repo: junegunn/fzf
     bin: fzf
     asset: '^fzf-.*-linux_{{ arch_go }}\.tar\.gz$'
-  - repo: BurntSushi/ripgrep
-    bin: rg
-    asset: '^ripgrep-.*-{{ arch_rust }}-unknown-linux-musl\.tar\.gz$'
-  - repo: ajeetdsouza/zoxide
-    bin: zoxide
-    asset: '^zoxide-.*-{{ arch_rust }}-unknown-linux-musl\.tar\.gz$'
-
-optional_github_release_tools:
-  - repo: dandavison/delta
-    bin: delta
-    asset: '^delta-.*-{{ arch_rust }}-unknown-linux-gnu\.tar\.gz$'
   - repo: jesseduffield/lazygit
     bin: lazygit
     asset: '^lazygit_.*_linux_{{ arch_mixed }}\.tar\.gz$'
+    tags: [optional]
   - repo: jdx/mise
     bin: mise
     asset: '^mise-v.*-linux-{{ arch_node }}\.tar\.gz$'
+    tags: [optional]
   - repo: neovim/neovim
     bin: nvim
     asset: '^nvim-linux-{{ arch_mixed }}\.tar\.gz$'
+    tags: [optional, neovim]
+  - repo: BurntSushi/ripgrep
+    bin: rg
+    asset: '^ripgrep-.*-{{ arch_rust }}-unknown-linux-musl\.tar\.gz$'
   - repo: tree-sitter/tree-sitter
     bin: tree-sitter
     asset: '^tree-sitter-cli-linux-{{ arch_node }}\.zip$'
+    tags: [optional, neovim]
+  - repo: ajeetdsouza/zoxide
+    bin: zoxide
+    asset: '^zoxide-.*-{{ arch_rust }}-unknown-linux-musl\.tar\.gz$'

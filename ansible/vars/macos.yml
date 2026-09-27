@@ -1,25 +1,33 @@
 ---
-homebrew_packages:
-  - bat
-  - curl
-  - eza
-  - file
-  - fzf
-  - git
-  - htop
-  - ripgrep
-  - stow
-  - tree
-  - unzip
-  - wget
-  - zip
-  - zoxide
+# Items with `tags` below are only installed when one of their tags is passed with --tags
+active_tags: "{{ (ansible_run_tags | list) | difference(ansible_skip_tags | list) }}"
 
-optional_homebrew_packages:
-  - btop
-  - delta
-  - lazygit
-  - mise
-  - neovim
-  - nmap
-  - tree-sitter-cli
+homebrew_packages:
+  - name: bat
+  - name: btop
+    tags: [optional]
+  - name: curl
+  - name: delta
+    tags: [optional]
+  - name: eza
+  - name: file
+  - name: fzf
+  - name: git
+  - name: htop
+  - name: lazygit
+    tags: [optional]
+  - name: mise
+    tags: [optional]
+  - name: neovim
+    tags: [optional, neovim]
+  - name: nmap
+    tags: [optional]
+  - name: ripgrep
+  - name: stow
+  - name: tree-sitter-cli
+    tags: [optional, neovim]
+  - name: tree
+  - name: unzip
+  - name: wget
+  - name: zip
+  - name: zoxide

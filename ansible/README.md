@@ -45,7 +45,16 @@ Package lists live in `vars/`:
 - `vars/macos.yml`: installed with Homebrew
 - `vars/debian.yml` (Debian, Ubuntu and derivatives): system packages installed with apt, and CLI tools installed from their latest GitHub release into `~/.local/opt` and linked into `~/.local/bin`
 
-Each file also has `optional_*` lists that are only installed when the `optional` tag is requested. Include `all` as well, otherwise only the optional tasks run:
+Items can have a list of `tags`, and are then only installed when one of those tags is requested. Items without `tags` are always installed. Any tag name works, so you can make your own groups:
+
+```yaml
+apt_packages:
+  - name: git
+  - name: nmap
+    tags: [optional]
+```
+
+Include `all` when passing tags, otherwise only tasks tagged with the given tags run:
 
 ```sh
 ./run.sh --tags all,optional
