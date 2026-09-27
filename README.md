@@ -14,6 +14,16 @@ cd ~/dotfiles
 stow .
 ```
 
+Optional font install scripts:
+
+### Fonts
+
+```sh
+brew install --cask font-fira-code
+brew install --cask font-jetbrains-mono
+brew install --cask font-meslo-lg-nerd-font
+```
+
 ### Local Zsh Overrides
 
 Creating the following file in the following location will allow you to source your own additions to the profile: `~/.zshrc.local`
