@@ -2,16 +2,15 @@
 
 if [ -f "$(command -v eza)" ]; then
   alias ls="eza"
-  alias ll="eza -l"
-  alias l="eza -la"
-  alias la="eza -la"
-  alias lsa="eza -la"
-  alias lt="eza -la --sort=modified --reverse"
+  alias ll="eza -lh --icons --group-directories-first --git --time-style=long-iso"
+  alias l="eza -lah --icons --group-directories-first --git --time-style=long-iso"
+  alias la="eza -lah --icons --group-directories-first --git --time-style=long-iso"
+  alias lt="eza -lahr --sort=modified --icons --git --time-style=long-iso"
 else
   alias ll="ls -lh"
   alias l="ls -lAh"
   alias la="ls -lAh"
-  alias lsa="ls -lAh"
+  alias lt="ls -lAh --sort=time"
 fi
 
 # Git
