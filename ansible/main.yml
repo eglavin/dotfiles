@@ -1,6 +1,7 @@
 ---
 - name: Setup system
   hosts: localhost
+  connection: local
 
   tasks:
     - name: Run common (Ubuntu)

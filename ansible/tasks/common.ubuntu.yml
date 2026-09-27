@@ -1,77 +1,39 @@
 ---
-- name: Refresh apt
+- name: Load Ubuntu variables
+  ansible.builtin.include_vars: "{{ playbook_dir }}/vars/ubuntu.yml"
+
+- name: Refresh and upgrade apt packages
   ansible.builtin.apt:
     update_cache: true
     cache_valid_time: 3600
+    upgrade: safe
   become: true
 
 - name: Install apt packages
   ansible.builtin.apt:
-    name: "{{ item }}"
+    name: "{{ apt_packages }}"
     state: present
-  with_items:
-    - bat
-    - btop
-    - build-essential
-    - curl
-    - file
-    - git
-    - htop
-    - nmap
-    - procps
-    - software-properties-common
-    - stow
-    - unzip
-    - wget
-    - zsh
   become: true
 
 - name: Set zsh is the default shell
   ansible.builtin.user:
-    name: "{{ ansible_user }}"
+    name: "{{ ansible_user_id }}"
     shell: "/usr/bin/zsh"
   become: true
 
-- name: Install zoxide
-  ansible.builtin.shell:
-    cmd: |
-      set -o pipefail
-      curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
-    executable: /bin/bash
-    creates: /home/{{ ansible_user_id }}/.local/bin/zoxide
+- name: Create ~/.local/bin
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.local/bin"
+    state: directory
+    mode: "0755"
 
-- name: Install linuxbrew
-  ansible.builtin.shell:
-    cmd: |
-      set -o pipefail
-      curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
-    executable: /bin/bash
-    creates: /home/linuxbrew/.linuxbrew/bin/brew
+- name: Install GitHub release tools
+  ansible.builtin.include_tasks: github_release.yml
+  loop: "{{ github_release_tools }}"
+  loop_control:
+    loop_var: tool
+    label: "{{ tool.repo }}"
 
-- name: Update linuxbrew
-  ansible.builtin.shell:
-    cmd: |
-      set -o pipefail
-      /home/linuxbrew/.linuxbrew/bin/brew update
-      /home/linuxbrew/.linuxbrew/bin/brew upgrade
-    executable: /bin/bash
-  changed_when: false
-
-- name: Install linuxbrew packages
-  ansible.builtin.shell:
-    cmd: |
-      set -o pipefail
-      /home/linuxbrew/.linuxbrew/bin/brew install {{ item }}
-    executable: /bin/bash
-  with_items:
-    - delta
-    - eza
-    - fzf
-    - gdu
-    - gping
-    - lazygit
-    - neovim
-    - ripgrep
-    - scc
-    - yq
+- name: Install mise tools
+  ansible.builtin.command: "{{ ansible_user_dir }}/.local/bin/mise install --yes"
   changed_when: false

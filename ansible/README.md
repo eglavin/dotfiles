@@ -21,10 +21,20 @@ brew install ansible
 
 ## Usage
 
-The `run.sh` script will install the required roles and run the playbook for you, stopping to prompt you for your login details.
+The `run.sh` script will install the required collections and run the playbook for you, stopping to prompt you for your sudo password.
 
-Alternatively you can run it manually with the following command:
+Alternatively you can run it manually with the following commands:
 
 ```sh
-ansible-playbook ./roles/main.yml --user $(whoami) --ask-pass --ask-become-pass
+ansible-galaxy collection install -r ./requirements.yml
+ansible-playbook ./main.yml --ask-become-pass
 ```
+
+## Packages
+
+Package lists live in `vars/`:
+
+- `vars/macos.yml`: installed with Homebrew
+- `vars/ubuntu.yml`: system packages installed with apt, and CLI tools installed from their latest GitHub release into `~/.local/opt` and linked into `~/.local/bin`
+
+Programming languages are managed by mise (`~/.config/mise/config.toml`).

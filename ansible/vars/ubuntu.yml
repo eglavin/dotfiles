@@ -1,0 +1,53 @@
+---
+apt_packages:
+  - bat
+  - btop
+  - build-essential
+  - curl
+  - file
+  - git
+  - htop
+  - nmap
+  - procps
+  - software-properties-common
+  - stow
+  - unzip
+  - wget
+  - zsh
+
+github_release_root: "{{ ansible_user_dir }}/.local/opt"
+
+# Projects name architectures inconsistently: rust targets use x86_64/aarch64,
+# Go projects use amd64/arm64, Node-style projects use x64/arm64, and some mix them
+arch_rust: "{{ ansible_facts.architecture }}"
+arch_go: "{{ {'x86_64': 'amd64', 'aarch64': 'arm64'}[ansible_facts.architecture] }}"
+arch_node: "{{ {'x86_64': 'x64', 'aarch64': 'arm64'}[ansible_facts.architecture] }}"
+arch_mixed: "{{ {'x86_64': 'x86_64', 'aarch64': 'arm64'}[ansible_facts.architecture] }}"
+
+# apt versions of these are too old (or missing) on Ubuntu LTS, so use upstream release binaries.
+# `asset` is a regex matched against the release's download filenames.
+github_release_tools:
+  - repo: dandavison/delta
+    bin: delta
+    asset: '^delta-.*-{{ arch_rust }}-unknown-linux-gnu\.tar\.gz$'
+  - repo: eza-community/eza
+    bin: eza
+    asset: '^eza_{{ arch_rust }}-unknown-linux-gnu\.tar\.gz$'
+  - repo: junegunn/fzf
+    bin: fzf
+    asset: '^fzf-.*-linux_{{ arch_go }}\.tar\.gz$'
+  - repo: jesseduffield/lazygit
+    bin: lazygit
+    asset: '^lazygit_.*_linux_{{ arch_mixed }}\.tar\.gz$'
+  - repo: jdx/mise
+    bin: mise
+    asset: '^mise-v.*-linux-{{ arch_node }}\.tar\.gz$'
+  - repo: neovim/neovim
+    bin: nvim
+    asset: '^nvim-linux-{{ arch_mixed }}\.tar\.gz$'
+  - repo: BurntSushi/ripgrep
+    bin: rg
+    asset: '^ripgrep-.*-{{ arch_rust }}-unknown-linux-musl\.tar\.gz$'
+  - repo: ajeetdsouza/zoxide
+    bin: zoxide
+    asset: '^zoxide-.*-{{ arch_rust }}-unknown-linux-musl\.tar\.gz$'

@@ -1,0 +1,83 @@
+---
+# Installs one tool from its latest GitHub release into
+# {{ github_release_root }}/<bin>/<tag> and symlinks the binary into ~/.local/bin.
+# A new release is only downloaded when its tag directory doesn't exist yet.
+
+- name: "Get latest release of {{ tool.repo }}"
+  ansible.builtin.uri:
+    url: "https://api.github.com/repos/{{ tool.repo }}/releases/latest"
+    headers:
+      Accept: application/vnd.github+json
+  register: release
+
+- name: "Select {{ tool.bin }} release asset"
+  ansible.builtin.set_fact:
+    release_assets: "{{ release.json.assets | selectattr('name', 'search', tool.asset) | list }}"
+    release_dir: "{{ github_release_root }}/{{ tool.bin }}/{{ release.json.tag_name }}"
+
+- name: "Check a release asset matched for {{ tool.bin }}"
+  ansible.builtin.assert:
+    that: release_assets | length == 1
+    fail_msg: "Expected one asset matching '{{ tool.asset }}' in {{ tool.repo }} {{ release.json.tag_name }}, found {{ release_assets | map(attribute='name') | list }}"
+    quiet: true
+
+- name: "Check if {{ tool.bin }} {{ release.json.tag_name }} is installed"
+  ansible.builtin.stat:
+    path: "{{ release_dir }}"
+  register: release_dir_stat
+
+- name: "Download {{ tool.bin }} {{ release.json.tag_name }}"
+  when: not release_dir_stat.stat.exists
+  block:
+    - name: "Create {{ tool.bin }} release directory"
+      ansible.builtin.file:
+        path: "{{ release_dir }}"
+        state: directory
+        mode: "0755"
+
+    - name: "Extract {{ release_assets[0].name }}"
+      ansible.builtin.unarchive:
+        src: "{{ release_assets[0].browser_download_url }}"
+        dest: "{{ release_dir }}"
+        remote_src: true
+  rescue:
+    # Don't leave a half-extracted directory behind, or later runs would treat it as installed
+    - name: "Remove partial {{ tool.bin }} release directory"
+      ansible.builtin.file:
+        path: "{{ release_dir }}"
+        state: absent
+
+    - name: "Fail {{ tool.bin }} install"
+      ansible.builtin.fail:
+        msg: "Failed to install {{ tool.bin }} {{ release.json.tag_name }}"
+
+# Archives differ in layout (flat, versioned subfolder, bin/ folder), so search for the binary
+- name: "Find {{ tool.bin }} binary"
+  ansible.builtin.find:
+    paths: "{{ release_dir }}"
+    patterns: "{{ tool.bin }}"
+    file_type: file
+    recurse: true
+  register: release_bin
+
+- name: "Link {{ tool.bin }} into ~/.local/bin"
+  ansible.builtin.file:
+    src: "{{ (release_bin.files | first).path }}"
+    dest: "{{ ansible_user_dir }}/.local/bin/{{ tool.bin }}"
+    state: link
+    force: true
+
+- name: "Find old {{ tool.bin }} releases"
+  ansible.builtin.find:
+    paths: "{{ github_release_root }}/{{ tool.bin }}"
+    file_type: directory
+    excludes: "{{ release.json.tag_name }}"
+  register: old_releases
+
+- name: "Remove old {{ tool.bin }} releases"
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: absent
+  loop: "{{ old_releases.files }}"
+  loop_control:
+    label: "{{ item.path }}"

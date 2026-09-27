@@ -1,0 +1,23 @@
+---
+homebrew_packages:
+  - bat
+  - btop
+  - curl
+  - delta
+  - eza
+  - file
+  - fzf
+  - git
+  - htop
+  - jq
+  - lazygit
+  - mise
+  - neovim
+  - nmap
+  - ripgrep
+  - stow
+  - tree
+  - unzip
+  - wget
+  - zip
+  - zoxide

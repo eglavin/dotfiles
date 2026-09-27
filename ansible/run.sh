@@ -9,10 +9,10 @@ do
 	esac
 done
 
-ansible-galaxy collection install community.general
+ansible-galaxy collection install -r ./requirements.yml
 
 if [ $verbose = "true" ]; then
-	ansible-playbook ./main.yml --user $(whoami) --ask-pass --ask-become-pass -vvv
+	ansible-playbook ./main.yml --ask-become-pass -vvv
 else
-	ansible-playbook ./main.yml --user $(whoami) --ask-pass --ask-become-pass
+	ansible-playbook ./main.yml --ask-become-pass
 fi
