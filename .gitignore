@@ -4,3 +4,4 @@
 .vim/.netrwhist
 windows/terminal/
 !windows/terminal/settings.json
+__pycache__/
