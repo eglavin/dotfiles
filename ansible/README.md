@@ -37,4 +37,8 @@ Package lists live in `vars/`:
 - `vars/macos.yml`: installed with Homebrew
 - `vars/ubuntu.yml`: system packages installed with apt, and CLI tools installed from their latest GitHub release into `~/.local/opt` and linked into `~/.local/bin`
 
-Programming languages are managed by mise (`~/.config/mise/config.toml`).
+Programming languages are managed by mise (`~/.config/mise/config.toml`). mise is always installed, but the step that installs its languages can be skipped and run manually later with `mise install`:
+
+```sh
+./run.sh --skip-tags mise_tools
+```
