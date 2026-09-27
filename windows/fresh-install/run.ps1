@@ -11,149 +11,134 @@ param (
 $redistributes = @{
   Label = "Redistributes"
   List  = @(
-    @{ Id = "Microsoft.DirectX"; Priority = 1 },
-    @{ Id = "Microsoft.VCRedist.2005.x86"; Priority = 1 },
-    @{ Id = "Microsoft.VCRedist.2005.x64"; Priority = 1 },
-    @{ Id = "Microsoft.VCRedist.2008.x86"; Priority = 1 },
-    @{ Id = "Microsoft.VCRedist.2008.x64"; Priority = 1 },
-    @{ Id = "Microsoft.VCRedist.2013.x86"; Priority = 1 },
-    @{ Id = "Microsoft.VCRedist.2013.x64"; Priority = 1 },
-    @{ Id = "Microsoft.VCRedist.2015+.x86"; Priority = 1 },
-    @{ Id = "Microsoft.VCRedist.2015+.x64"; Priority = 1 }
+    @{ Id = "Microsoft.DirectX" },
+    @{ Id = "Microsoft.VCRedist.2005.x86" },
+    @{ Id = "Microsoft.VCRedist.2005.x64" },
+    @{ Id = "Microsoft.VCRedist.2008.x86" },
+    @{ Id = "Microsoft.VCRedist.2008.x64" },
+    @{ Id = "Microsoft.VCRedist.2013.x86" },
+    @{ Id = "Microsoft.VCRedist.2013.x64" },
+    @{ Id = "Microsoft.VCRedist.2015+.x86" },
+    @{ Id = "Microsoft.VCRedist.2015+.x64" }
   )
 }
 
 $information = @{
   Label = "Information"
   List  = @(
-    @{ Id = "ALCPU.CoreTemp"; Priority = 1 },
-    @{ Id = "AntibodySoftware.WizTree"; Priority = 1 },
-    @{ Id = "CPUID.CPU-Z"; Priority = 1 },
-    @{ Id = "CPUID.HWMonitor"; Priority = 1 },
-    @{ Id = "CrystalDewWorld.CrystalDiskInfo"; Priority = 1 },
-    @{ Id = "CrystalDewWorld.CrystalDiskMark"; Priority = 1 },
-    @{ Id = "NirSoft.BlueScreenView"; Priority = 1 },
-    @{ Id = "TechPowerUp.GPU-Z"; Priority = 1 }
+    @{ Id = "ALCPU.CoreTemp" },
+    @{ Id = "AntibodySoftware.WizTree" },
+    @{ Id = "CPUID.CPU-Z" },
+    @{ Id = "CPUID.HWMonitor" },
+    @{ Id = "CrystalDewWorld.CrystalDiskInfo" },
+    @{ Id = "CrystalDewWorld.CrystalDiskMark" },
+    @{ Id = "NirSoft.BlueScreenView" },
+    @{ Id = "TechPowerUp.GPU-Z" }
   )
 }
 
 $tools = @{
   Label = "Tools"
   List  = @(
-    @{ Id = "Armin2208.WindowsAutoNightMode"; Priority = 1 },
-    @{ Id = "Bitwarden.Bitwarden"; Priority = 1 },
-    @{ Id = "Giorgiotani.Peazip"; Priority = 1 },
-    @{ Id = "Malwarebytes.Malwarebytes"; Priority = 1 },
-    @{ Id = "Notepad++.Notepad++"; Priority = 1 },
+    @{ Id = "Armin2208.WindowsAutoNightMode" },
+    @{ Id = "Bitwarden.Bitwarden" },
+    @{ Id = "Giorgiotani.Peazip" },
+    @{ Id = "Malwarebytes.Malwarebytes" },
+    @{ Id = "Notepad++.Notepad++" },
     @{},
-    @{ Id = "Alacritty.Alacritty" },
-    @{ Id = "AutoHotkey.AutoHotkey" },
-    @{ Id = "Devolutions.RemoteDesktopManager" },
-    @{ Id = "File-New-Project.EarTrumpet" },
-    @{ Id = "Iterate.Cyberduck" },
-    @{ Id = "Microsoft.Teams" },
-    @{ Id = "Microsoft.PowerToys" },
-    @{ Id = "Microsoft.VisualStudioCode"; Options = "--force --scope machine --override '/SILENT /SP- /MERGETASKS=`"!runcode,!desktopicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath`"'" },
-    @{ Id = "Neovim.Neovim" },
-    @{ Id = "NordVPN.NordVPN" },
-    @{ Id = "SublimeHQ.SublimeText.4" },
-    @{ Id = "WiresharkFoundation.Wireshark" }
+    @{ Id = "Alacritty.Alacritty"; Tags = @('optional') },
+    @{ Id = "AutoHotkey.AutoHotkey"; Tags = @('optional') },
+    @{ Id = "Devolutions.RemoteDesktopManager"; Tags = @('optional') },
+    @{ Id = "File-New-Project.EarTrumpet"; Tags = @('optional') },
+    @{ Id = "Iterate.Cyberduck"; Tags = @('optional') },
+    @{ Id = "Microsoft.Teams"; Tags = @('optional') },
+    @{ Id = "Microsoft.PowerToys"; Tags = @('optional') },
+    @{ Id = "Microsoft.VisualStudioCode"; Options = "--force --scope machine --override '/SILENT /SP- /MERGETASKS=`"!runcode,!desktopicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath`"'"; Tags = @('optional') },
+    @{ Id = "Neovim.Neovim"; Tags = @('optional') },
+    @{ Id = "NordVPN.NordVPN"; Tags = @('optional') },
+    @{ Id = "SublimeHQ.SublimeText.4"; Tags = @('optional') },
+    @{ Id = "WiresharkFoundation.Wireshark"; Tags = @('optional') }
   )
 }
 
 $cli = @{
   Label = "CLI"
   List  = @(
-    @{ Id = "Microsoft.PowerShell"; Priority = 1 },
-    @{ Id = "JanDeDobbeleer.OhMyPosh"; Priority = 1 },
-    @{ Id = "Git.Git"; Priority = 1 },
-    @{ Id = "dandavison.delta"; Priority = 1 },
-    @{ Id = "BurntSushi.ripgrep.MSVC"; Priority = 1 },
-    @{ Id = "junegunn.fzf"; Priority = 1 },
-    @{ Id = "ajeetdsouza.zoxide"; Priority = 1 },
-    @{ Id = "jdx.mise"; Priority = 1 },
+    @{ Id = "Microsoft.PowerShell" },
+    @{ Id = "JanDeDobbeleer.OhMyPosh" },
+    @{ Id = "Git.Git" },
+    @{ Id = "dandavison.delta" },
+    @{ Id = "BurntSushi.ripgrep.MSVC" },
+    @{ Id = "junegunn.fzf" },
+    @{ Id = "ajeetdsouza.zoxide" },
+    @{ Id = "jdx.mise" },
     @{},
-    @{ Id = "Gyan.FFmpeg" },
-    @{ Id = "JesseDuffield.lazygit" },
-    @{ Id = "jqlang.jq" },
-    @{ Id = "MikeFarah.yq" },
-    @{ Id = "Schniz.fnm" },
-    @{ Id = "yt-dlp.yt-dlp" }
-  )
-}
-
-$programmingLanguage = @{
-  Label = "Programming Languages"
-  List  = @(
-    @{ Id = "EclipseAdoptium.Temurin.23.JDK" },
-    @{ Id = "Rustlang.Rustup" },
-    @{ Id = "zig.zig" }
+    @{ Id = "Gyan.FFmpeg"; Tags = @('optional') },
+    @{ Id = "JesseDuffield.lazygit"; Tags = @('optional') },
+    @{ Id = "jqlang.jq"; Tags = @('optional') },
+    @{ Id = "MikeFarah.yq"; Tags = @('optional') },
+    @{ Id = "Schniz.fnm"; Tags = @('optional') },
+    @{ Id = "yt-dlp.yt-dlp"; Tags = @('optional') }
   )
 }
 
 $development = @{
   Label = "Development"
   List  = @(
-    @{ Id = "Amazon.AWSCLI" },
-    @{ Id = "Docker.DockerDesktop" },
-    @{ Id = "Google.AndroidStudio" },
-    @{ Id = "Microsoft.AzureCLI" },
-    @{ Id = "Microsoft.AzureFunctionsCoreTools" },
-    @{ Id = "Microsoft.AzureStorageExplorer" },
-    @{ Id = "NVAccess.NVDA" },
-    @{ Id = "Postman.Postman" },
-    @{ Id = "RedHat.Podman" }
-  )
-}
-
-$database = @{
-  Label = "Database"
-  List  = @(
-    @{ Id = "DBBrowserForSQLite.DBBrowserForSQLite" },
-    @{ Id = "Microsoft.SQLServerManagementStudio" },
-    @{ Id = "MongoDB.DatabaseTools" }
+    @{ Id = "Amazon.AWSCLI"; Tags = @('optional') },
+    @{ Id = "DBBrowserForSQLite.DBBrowserForSQLite"; Tags = @('optional') },
+    @{ Id = "Docker.DockerDesktop"; Tags = @('optional') },
+    @{ Id = "Google.AndroidStudio"; Tags = @('optional') },
+    @{ Id = "Microsoft.AzureCLI"; Tags = @('optional') },
+    @{ Id = "Microsoft.AzureFunctionsCoreTools"; Tags = @('optional') },
+    @{ Id = "Microsoft.AzureStorageExplorer"; Tags = @('optional') },
+    @{ Id = "Microsoft.SQLServerManagementStudio"; Tags = @('optional') },
+    @{ Id = "MongoDB.DatabaseTools"; Tags = @('optional') },
+    @{ Id = "NVAccess.NVDA"; Tags = @('optional') },
+    @{ Id = "Postman.Postman"; Tags = @('optional') },
+    @{ Id = "RedHat.Podman"; Tags = @('optional') }
   )
 }
 
 $browsers = @{
   Label = "Browsers"
   List  = @(
-    @{ Id = "Mozilla.Firefox"; Priority = 1 },
+    @{ Id = "Mozilla.Firefox" },
     @{},
-    @{ Id = "Google.Chrome.Dev" },
-    @{ Id = "Google.Chrome" },
-    @{ Id = "Microsoft.Edge.Dev" },
-    @{ Id = "Mozilla.Firefox.DeveloperEdition" },
-    @{ Id = "Zen-Team.Zen-Browser" }
+    @{ Id = "Google.Chrome.Dev"; Tags = @('optional') },
+    @{ Id = "Google.Chrome"; Tags = @('optional') },
+    @{ Id = "Microsoft.Edge.Dev"; Tags = @('optional') },
+    @{ Id = "Mozilla.Firefox.DeveloperEdition"; Tags = @('optional') },
+    @{ Id = "Zen-Team.Zen-Browser"; Tags = @('optional') }
   )
 }
 
 $productivity = @{
   Label = "Productivity"
   List  = @(
-    @{ Id = "Audacity.Audacity" },
-    @{ Id = "BlenderFoundation.Blender" },
-    @{ Id = "NickeManarin.ScreenToGif" },
-    @{ Id = "Notion.Notion" },
-    @{ Id = "OBSProject.OBSStudio" },
-    @{ Id = "TheDocumentFoundation.LibreOffice" },
-    @{ Id = "XnSoft.XnViewMP" },
-    @{ Name = "Affinity Designer 2" },
-    @{ Name = "Affinity Photo 2" },
-    @{ Name = "Affinity Publisher 2" }
+    @{ Id = "Audacity.Audacity"; Tags = @('optional') },
+    @{ Id = "BlenderFoundation.Blender"; Tags = @('optional') },
+    @{ Id = "NickeManarin.ScreenToGif"; Tags = @('optional') },
+    @{ Id = "Notion.Notion"; Tags = @('optional') },
+    @{ Id = "OBSProject.OBSStudio"; Tags = @('optional') },
+    @{ Id = "TheDocumentFoundation.LibreOffice"; Tags = @('optional') },
+    @{ Id = "XnSoft.XnViewMP"; Tags = @('optional') },
+    @{ Name = "Affinity Designer 2"; Tags = @('optional') },
+    @{ Name = "Affinity Photo 2"; Tags = @('optional') },
+    @{ Name = "Affinity Publisher 2"; Tags = @('optional') }
   )
 }
 
 $entertainment = @{
   Label = "Entertainment"
   List  = @(
-    @{ Id = "VideoLAN.VLC"; Priority = 1 },
+    @{ Id = "VideoLAN.VLC" },
     @{},
-    @{ Id = "DOSBox.DOSBox" },
-    @{ Id = "Plex.Plex" },
-    @{ Id = "Sky.SkyGo" },
-    @{ Id = "Spotify.Spotify" },
-    @{ Id = "Valve.Steam" }
+    @{ Id = "DOSBox.DOSBox"; Tags = @('optional') },
+    @{ Id = "Plex.Plex"; Tags = @('optional') },
+    @{ Id = "Sky.SkyGo"; Tags = @('optional') },
+    @{ Id = "Spotify.Spotify"; Tags = @('optional') },
+    @{ Id = "Valve.Steam"; Tags = @('optional') }
   )
 }
 
@@ -163,8 +148,6 @@ $allLists = @(
   $tools,
   $cli,
   $development,
-  $database,
-  $programmingLanguage,
   $browsers,
   $productivity,
   $entertainment
