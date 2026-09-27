@@ -1,24 +1,25 @@
 ---
 homebrew_packages:
   - bat
-  - btop
   - curl
-  - delta
   - eza
   - file
   - fzf
   - git
   - htop
-  - jq
-  - lazygit
-  - mise
-  - neovim
-  - nmap
   - ripgrep
   - stow
   - tree
-  - tree-sitter-cli
   - unzip
   - wget
   - zip
   - zoxide
+
+optional_homebrew_packages:
+  - btop
+  - delta
+  - lazygit
+  - mise
+  - neovim
+  - nmap
+  - tree-sitter-cli

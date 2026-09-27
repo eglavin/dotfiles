@@ -1,19 +1,23 @@
 ---
 apt_packages:
   - bat
-  - btop
   - build-essential
   - curl
   - file
   - git
   - htop
-  - nmap
   - procps
   - software-properties-common
   - stow
+  - tree
   - unzip
   - wget
+  - zip
   - zsh
+
+optional_apt_packages:
+  - btop
+  - nmap
 
 github_release_root: "{{ ansible_facts['user_dir'] }}/.local/opt"
 
@@ -27,15 +31,23 @@ arch_mixed: "{{ {'x86_64': 'x86_64', 'aarch64': 'arm64'}[ansible_facts['architec
 # apt versions of these are too old (or missing) on Ubuntu LTS, so use upstream release binaries.
 # `asset` is a regex matched against the release's download filenames.
 github_release_tools:
-  - repo: dandavison/delta
-    bin: delta
-    asset: '^delta-.*-{{ arch_rust }}-unknown-linux-gnu\.tar\.gz$'
   - repo: eza-community/eza
     bin: eza
     asset: '^eza_{{ arch_rust }}-unknown-linux-gnu\.tar\.gz$'
   - repo: junegunn/fzf
     bin: fzf
     asset: '^fzf-.*-linux_{{ arch_go }}\.tar\.gz$'
+  - repo: BurntSushi/ripgrep
+    bin: rg
+    asset: '^ripgrep-.*-{{ arch_rust }}-unknown-linux-musl\.tar\.gz$'
+  - repo: ajeetdsouza/zoxide
+    bin: zoxide
+    asset: '^zoxide-.*-{{ arch_rust }}-unknown-linux-musl\.tar\.gz$'
+
+optional_github_release_tools:
+  - repo: dandavison/delta
+    bin: delta
+    asset: '^delta-.*-{{ arch_rust }}-unknown-linux-gnu\.tar\.gz$'
   - repo: jesseduffield/lazygit
     bin: lazygit
     asset: '^lazygit_.*_linux_{{ arch_mixed }}\.tar\.gz$'
@@ -45,12 +57,6 @@ github_release_tools:
   - repo: neovim/neovim
     bin: nvim
     asset: '^nvim-linux-{{ arch_mixed }}\.tar\.gz$'
-  - repo: BurntSushi/ripgrep
-    bin: rg
-    asset: '^ripgrep-.*-{{ arch_rust }}-unknown-linux-musl\.tar\.gz$'
   - repo: tree-sitter/tree-sitter
     bin: tree-sitter
     asset: '^tree-sitter-cli-linux-{{ arch_node }}\.zip$'
-  - repo: ajeetdsouza/zoxide
-    bin: zoxide
-    asset: '^zoxide-.*-{{ arch_rust }}-unknown-linux-musl\.tar\.gz$'

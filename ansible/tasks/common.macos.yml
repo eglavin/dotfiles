@@ -12,7 +12,13 @@
     name: "{{ homebrew_packages }}"
     state: present
 
+- name: Install optional homebrew packages
+  community.general.homebrew:
+    name: "{{ optional_homebrew_packages }}"
+    state: present
+  tags: [never, optional]
+
 - name: Install mise tools
   ansible.builtin.command: /opt/homebrew/bin/mise install --yes
   changed_when: false
-  tags: mise_tools
+  tags: [never, mise_tools]
