@@ -3,12 +3,12 @@
 function .. { Set-Location .. }
 # Remove built in windows powershell alias if exists
 if (Get-Alias -Name ls -ErrorAction SilentlyContinue) {
-  Remove-Item -force alias:ls
-  function ls { Get-ChildItem $args | Sort-Object Name | Format-Wide -AutoSize }
+  Remove-Item -Force alias:ls
+  function ls { Get-ChildItem $args -Exclude '.*' | Sort-Object Name | Format-Wide -AutoSize }
 }
-function ll { Get-ChildItem $args | Sort-Object Name }
-function l { Get-ChildItem -Force $args | Sort-Object Name }
-function la { Get-ChildItem -Force $args | Sort-Object Name }
+function ll { Get-ChildItem $args -Exclude '.*' }
+function l { Get-ChildItem -Force $args }
+function la { Get-ChildItem -Force $args }
 function lt { Get-ChildItem -Force $args | Sort-Object LastWriteTime -Descending }
 
 function Get-FolderSize {
@@ -27,7 +27,7 @@ function Get-FolderSize {
     if ($null -eq $totalBytes) { $totalBytes = 0 }
 
     # Define the human-readable conversion logic
-    $units = "B", "KB", "MB", "GB", "TB"
+    $units = 'B', 'KB', 'MB', 'GB', 'TB'
     $index = 0
     $size = $totalBytes
 
@@ -39,9 +39,9 @@ function Get-FolderSize {
     # Return a custom object for easy manipulation later
     return [PSCustomObject]@{
       Path       = $Path
-      Size       = "{0:N2}" -f $size
+      Size       = '{0:N2}' -f $size
       Unit       = $units[$index]
-      Formatted  = ("{0:N2} {1}" -f $size, $units[$index])
+      Formatted  = ('{0:N2} {1}' -f $size, $units[$index])
       TotalBytes = $totalBytes
     }
   }
@@ -59,15 +59,15 @@ function gitwhoami {
 function gitpb { git push -u origin (git branch --show) }
 function gitor {
   $url = git config --get remote.origin.url
-  if ($url -Match "@") {
-    Start-Process "https://$($url.Split("@")[1])" # Fix for Azure Devops repos with config url like https://{org}@{url}
+  if ($url -match '@') {
+    Start-Process "https://$($url.Split('@')[1])" # Fix for Azure Devops repos with config url like https://{org}@{url}
   }
   else {
     Start-Process $url
   }
 }
 function dotpull {
-  $dir = Join-Path $HOME "dotfiles"
+  $dir = Join-Path $HOME 'dotfiles'
   $before = git -C $dir rev-parse HEAD
   git -C $dir pull
   if ($LASTEXITCODE -ne 0) { return }
@@ -75,14 +75,14 @@ function dotpull {
     git -C $dir submodule update --init --recursive
   }
   else {
-    Write-Host "dotfiles already up to date"
+    Write-Host 'dotfiles already up to date'
   }
 }
 
 # Editor
 
 function UseNvimOrVim {
-  if (Get-Command nvim -errorAction SilentlyContinue) {
+  if (Get-Command nvim -ErrorAction SilentlyContinue) {
     nvim $args
   }
   else {
@@ -119,14 +119,14 @@ function ci. {
 function GetVisualStudioLocation {
   # Determining Installed Visual Studio Path for 2017 https://stackoverflow.com/a/54729540
   return Get-ItemPropertyValue `
-    -Path "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\devenv.exe" `
-    -Name "(Default)";
+    -Path 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\devenv.exe' `
+    -Name '(Default)';
 }
 function vs { Start-Process (GetVisualStudioLocation) . }
 function vsp. {
-  $foundSolutionFile = Get-ChildItem *.slnx,*.sln
+  $foundSolutionFile = Get-ChildItem *.slnx, *.sln
   if ($foundSolutionFile.Count -eq 0) {
-    Write-Error "No solution file found"
+    Write-Error 'No solution file found'
   }
   else {
     if ($foundSolutionFile.Count -gt 1) {
