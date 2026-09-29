@@ -87,7 +87,10 @@
     "disabledProfileSources": 
     [
         "Windows.Terminal.Wsl",
-        "Windows.Terminal.VisualStudio"
+        "Windows.Terminal.VisualStudio",
+        "VSDebugConsole",
+        "Microsoft.WSL",
+        "Git"
     ],
     "initialCols": 140,
     "initialRows": 40,
@@ -254,6 +257,7 @@
         ]
     },
     "schemes": [],
+    "searchWebDefaultQueryUrl": "https://www.google.com/search?q=%22%s%22",
     "tabWidthMode": "equal",
     "theme": "dark",
     "themes": [],
