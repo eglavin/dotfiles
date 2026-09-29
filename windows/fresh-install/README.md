@@ -22,6 +22,7 @@ To include items with a tag you can include a `-Tags` argument while running:
 - `mise`
 - `neovim`
 - `optional`
+- `vscode`
 - `work`
 
 <!-- TAGS END MARKER -->
@@ -89,7 +90,7 @@ winget install --id=Zen-Team.Zen-Browser
 ### Text and IDE's
 
 ```ps1
-winget install --id=Microsoft.VisualStudioCode --force --scope machine --override '/SILENT /SP- /MERGETASKS="!runcode,!desktopicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath"'
+winget install --id=Microsoft.VisualStudioCode --scope="machine" --override="/SILENT /SP- /MERGETASKS='!runcode,!desktopicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath'"
 winget install --id=Neovim.Neovim
 winget install --id=Notepad++.Notepad++
 winget install --id=Obsidian.Obsidian

@@ -62,8 +62,8 @@ $listOfGroups = @(
       @{
         Id      = 'Microsoft.VisualStudioCode';
         Options = $(
-          '--scope=machine',
-          "--override='/SILENT /SP- /MERGETASKS='!runcode,!desktopicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath''"
+          '--scope="machine"',
+          "--override=`"/SILENT /SP- /MERGETASKS='!runcode,!desktopicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath'`""
         );
         Tags    = @('all', 'optional', 'work', "vscode")
       },
