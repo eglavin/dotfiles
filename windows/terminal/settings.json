@@ -90,7 +90,8 @@
         "Windows.Terminal.VisualStudio",
         "VSDebugConsole",
         "Microsoft.WSL",
-        "Git"
+        "Git",
+        "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
     ],
     "initialCols": 140,
     "initialRows": 40,
