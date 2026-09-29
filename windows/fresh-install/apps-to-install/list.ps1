@@ -34,10 +34,12 @@ $listOfGroups = @(
     Label = 'Tools and utilities'
     Apps  = @(
       @{ Id = 'Bitwarden.Bitwarden' },
+      @{ Id = 'Deskflow.Deskflow' },
       @{ Id = 'Giorgiotani.Peazip' },
       @{ Id = 'Iterate.Cyberduck'; Tags = @('all', 'optional') },
       @{ Id = 'LocalSend.LocalSend'; Tags = @('all', 'optional') },
       @{ Id = 'Malwarebytes.Malwarebytes' },
+      @{ Id = 'MHNexus.HxD'; Tags = @('all', 'optional') },
       @{ Id = 'Microsoft.PowerToys'; Tags = @('all', 'optional') },
       @{ Id = 'NirSoft.WakeMeOnLan'; Tags = @('all', 'optional') },
       @{ Id = 'NordVPN.NordVPN'; Tags = @('all') },
@@ -100,7 +102,8 @@ $listOfGroups = @(
       @{ Id = 'MongoDB.DatabaseTools'; Tags = @('all') },
       @{ Id = 'NVAccess.NVDA'; Tags = @('all', 'optional', 'work') },
       @{ Id = 'Postman.Postman'; Tags = @('all', 'work') },
-      @{ Id = 'RedHat.Podman'; Tags = @('all', 'optional', 'work') }
+      @{ Id = 'RedHat.Podman'; Tags = @('all', 'optional', 'work') },
+      @{ Id = 'TPGi.CCAe'; Tags = @('all', 'optional', 'work') }
     )
   },
   @{
