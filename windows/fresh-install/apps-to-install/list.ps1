@@ -59,7 +59,14 @@ $listOfGroups = @(
   @{
     Label = "Text and IDE's"
     Apps  = @(
-      @{ Id = 'Microsoft.VisualStudioCode'; Options = "--force --scope machine --override '/SILENT /SP- /MERGETASKS=`"!runcode,!desktopicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath`"'"; Tags = @('all', 'optional', 'work') },
+      @{
+        Id      = 'Microsoft.VisualStudioCode';
+        Options = $(
+          '--scope=machine',
+          "--override='/SILENT /SP- /MERGETASKS='!runcode,!desktopicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath''"
+        );
+        Tags    = @('all', 'optional', 'work', "vscode")
+      },
       @{ Id = 'Neovim.Neovim'; Tags = @('all', 'optional', 'neovim', 'work') },
       @{ Id = 'Notepad++.Notepad++' },
       @{ Id = 'Obsidian.Obsidian'; Tags = @('all', 'optional', 'work') },

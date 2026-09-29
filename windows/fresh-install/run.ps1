@@ -1,6 +1,8 @@
 param (
   [string[]]$Tags,
-  [switch]$Dryrun
+  [string[]]$InstallTags,
+  [switch]$Dryrun,
+  [switch]$Debug
 )
 
 . (Join-Path $PSScriptRoot 'apps-to-install', 'list.ps1')
@@ -9,6 +11,10 @@ function HasTag {
   param (
     [string[]] $AppTags
   )
+
+  if ($InstallTags.Count -ne 0) {
+    return @($AppTags | Where-Object { $InstallTags -contains $_ }).Count -eq 0
+  }
 
   if ($AppTags.Count -eq 0) {
     return $false
@@ -33,24 +39,35 @@ foreach ($group in $listOfGroups) {
       continue
     }
 
-    Write-Host  "  Installing: $($app.Id ? $app.Id : $app.Name)" -NoNewline
+    $argv = New-Object System.Collections.Generic.List[System.Object]
+
+    if ($app.Id) {
+      Write-Host  "  Installing: $($app.Id)" -NoNewline
+      $argv.Add("--id=$($app.Id)")
+    }
+    else {
+      Write-Host  "  Installing: $($app.Name)" -NoNewline
+      $argv.Add("--name=$($app.Name)")
+    }
 
     # Show list of significant tags
     $SignificantTags = $app.Tags | Where-Object { $_ -ne 'all' }
     if ($SignificantTags.Count -ne 0) {
-      Write-Host " (Tags: $($SignificantTags | Join-String $_ -Separator ' ' -SingleQuote))" -ForegroundColor Yellow
+      Write-Host " (Tags: $($SignificantTags | Join-String $_ -Separator ' ' -SingleQuote))" -ForegroundColor Yellow -NoNewline
     }
-    else {
-      Write-Host ''
+
+    Write-Host '' # Add newline
+
+    if ($app.Options) {
+      $app.Options | ForEach-Object { $argv.Add($_) }
+    }
+
+    if ($Debug) {
+      Write-Host "    Install command: winget install $($argv)" -ForegroundColor DarkMagenta
     }
 
     if ($Dryrun -eq $false) {
-      if ($app.Id) {
-        winget install --id=$($app.Id) $($app.Options)
-      }
-      else {
-        winget install --name=$($app.Name) $($app.Options)
-      }
+      winget install @argv
     }
   }
 }
