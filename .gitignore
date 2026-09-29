@@ -1,7 +1,9 @@
+__pycache__/
+!windows/terminal/settings.json
 .config/alacritty/alacritty.local.toml
 .config/htop/
-.vim/plugged/
+.config/mise/config.local.toml
+.config/powershell/Modules/
 .vim/.netrwhist
+.vim/plugged/
 windows/terminal/
-!windows/terminal/settings.json
-__pycache__/

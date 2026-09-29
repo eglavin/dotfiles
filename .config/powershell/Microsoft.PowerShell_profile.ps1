@@ -2,12 +2,6 @@ $PROFILE_DIR = Split-Path -parent $PROFILE;
 
 Set-PSReadLineOption -HistoryNoDuplicates -PredictionSource HistoryAndPlugin
 
-# Posh-Git
-if (Test-Path -Path "$PROFILE_DIR\Modules\posh-git" -PathType Container) {
-  $env:POSH_GIT_ENABLED = $true
-  Import-Module -Name Posh-Git
-}
-
 # oh-my-posh
 if (Get-Command -Name oh-my-posh -ErrorAction SilentlyContinue) {
   oh-my-posh init pwsh --config "$PROFILE_DIR\theme.omp.json" | Invoke-Expression

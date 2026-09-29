@@ -14,19 +14,17 @@ cd ~/dotfiles
 stow .
 ```
 
-Optional font install scripts:
+### Local Zsh Overrides
 
-### Fonts
+Creating the following file will allow you to source your own additions: `~/.zshrc.local`
+
+### Optional fonts install with brew
 
 ```sh
 brew install --cask font-fira-code
 brew install --cask font-jetbrains-mono
 brew install --cask font-meslo-lg-nerd-font
 ```
-
-### Local Zsh Overrides
-
-Creating the following file in the following location will allow you to source your own additions to the profile: `~/.zshrc.local`
 
 ## Installation (Windows)
 
@@ -39,25 +37,17 @@ git clone https://github.com/eglavin/dotfiles.git ~/dotfiles
 ~/dotfiles/windows/create-symlinks.ps1 -Run
 ```
 
-Optional enhancements, which can be installed using the following commands:
+### Local Powershell Overrides
 
-```ps1
-winget install --id=JanDeDobbeleer.OhMyPosh
-Install-Module -Name "posh-git" -Scope CurrentUser -Force
-Install-Module -Name Microsoft.WinGet.Client -Scope CurrentUser -Force
-```
+Creating the following file will allow you to source your own additions: `~/dotfiles/.config/powershell/Microsoft.PowerShell_profile.local.ps1`
 
-Using oh-my-posh, we can use the following commands to setup some of the fonts used, which need to be installed from an elevated prompt:
+### Optional fonts install with oh-my-posh
 
 ```ps1
 oh-my-posh font install FiraCode
 oh-my-posh font install JetBrainsMono
 oh-my-posh font install Meslo
 ```
-
-### Local Powershell Overrides
-
-Creating the following file in the following location will allow you to source your own additions to the profile: `~/dotfiles/.config/powershell/Microsoft.PowerShell_profile.local.ps1`
 
 ## References
 
