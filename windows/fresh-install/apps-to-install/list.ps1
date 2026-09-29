@@ -39,7 +39,7 @@ $listOfGroups = @(
       @{ Id = 'Iterate.Cyberduck'; Tags = @('all', 'optional') },
       @{ Id = 'LocalSend.LocalSend'; Tags = @('all', 'optional') },
       @{ Id = 'Malwarebytes.Malwarebytes' },
-      @{ Id = 'MHNexus.HxD'; Tags = @('all', 'optional') },
+      @{ Id = 'MHNexus.HxD'; Tags = @('all') },
       @{ Id = 'Microsoft.PowerToys'; Tags = @('all', 'optional') },
       @{ Id = 'NirSoft.WakeMeOnLan'; Tags = @('all', 'optional') },
       @{ Id = 'NordVPN.NordVPN'; Tags = @('all') },

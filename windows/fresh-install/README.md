@@ -64,10 +64,12 @@ winget install --id=TechPowerUp.GPU-Z
 
 ```ps1
 winget install --id=Bitwarden.Bitwarden
+winget install --id=Deskflow.Deskflow
 winget install --id=Giorgiotani.Peazip
 winget install --id=Iterate.Cyberduck
 winget install --id=LocalSend.LocalSend
 winget install --id=Malwarebytes.Malwarebytes
+winget install --id=MHNexus.HxD
 winget install --id=Microsoft.PowerToys
 winget install --id=NirSoft.WakeMeOnLan
 winget install --id=NordVPN.NordVPN
@@ -131,6 +133,7 @@ winget install --id=MongoDB.DatabaseTools
 winget install --id=NVAccess.NVDA
 winget install --id=Postman.Postman
 winget install --id=RedHat.Podman
+winget install --id=TPGi.CCAe
 ```
 
 ### AI tools
