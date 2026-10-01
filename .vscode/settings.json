@@ -6,5 +6,8 @@
 		"**/.git": false
 	},
 	"ansible.ansible.path": "ansible",
-	"ansible.python.interpreterPath": "python3"
+	"ansible.python.interpreterPath": "python3",
+	"evenBetterToml.schema.associations": {
+		".config/mise/config.toml": "https://mise.jdx.dev/schema/mise.json"
+	}
 }

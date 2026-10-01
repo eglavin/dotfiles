@@ -161,6 +161,7 @@ function pncp {
   pnpm run test run
 }
 Set-Alias pn pnpm -Option AllScope
+Set-Alias py python -Option AllScope
 
 function which {
   Get-Command -Name $args -ErrorAction SilentlyContinue |

@@ -1,5 +1,6 @@
 [tools]
-node = { version = "24", postinstall = "npm i -g corepack@latest && corepack install -g pnpm@latest-11" }
+node = "24"
+pnpm = "latest"
 bun = "latest"
 deno = "latest"
 python = "latest"
@@ -9,9 +10,14 @@ java = "temurin"
 go = "latest"
 
 [settings]
-python.uv_venv_auto = true
-windows_shim_mode = "symlink"
+pin = true
+not_found_auto_install = false
+task.run_auto_install = false
+
+idiomatic_version_file_enable_tools = ["node"]
+idiomatic_version_file_disable_files = ["node:package.json"]
+
+python.uv_venv_auto = "create|source"
 
 [env]
-# UV_PYTHON = { value = "{{ tools.python.path }}", tools = true }
 _.path = ['{{config_root}}/node_modules/.bin']
