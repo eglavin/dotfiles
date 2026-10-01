@@ -28,11 +28,23 @@
     "customThemes": [],
     "enabledByDefault": false,
     "enabledFor": [
-        "dev.azure.com",
+        "blog.logrocket.com",
+        "dev.to",
+        "digital-strategy.ec.europa.eu",
+        "docs.npmjs.com",
+        "ie.sportsdirect.com",
         "medium.com",
+        "news.ycombinator.com",
         "refactoring.guru",
         "support.plex.tv",
+        "swagger.io",
+        "teachyourselfcs.com",
+        "wiki.rage.mp",
+        "www.amazon.co.uk",
+        "www.amazon.ie",
+        "www.bordbia.ie",
         "www.computeruniverse.net",
+        "www.met.ie",
         "www.npmjs.com",
         "www.pcgamingwiki.com",
         "www.rte.ie",
@@ -63,7 +75,11 @@
     "enableContextMenus": false,
     "detectDarkTheme": true,
     "siteList": [],
-    "notifyOfNews": false,
+    "installation": {
+        "date": 1744495681465,
+        "reason": "install",
+        "version": "4.9.103"
+    },
     "readNews": [
         "v4-9",
         "attention",
@@ -94,6 +110,7 @@
         "thanks-2023"
     ],
     "automationBehaviour": "OnOff",
+    "notifyOfNews": false,
     "displayedNews": [
         "mobile",
         "v5-survey",
@@ -101,11 +118,7 @@
         "news-2023",
         "thanks-2023",
         "g-search-crash",
-        "firefox-bugs"
-    ],
-    "installation": {
-        "date": 1744495681465,
-        "reason": "install",
-        "version": "4.9.103"
-    }
+        "firefox-bugs",
+        "google-docs-bugs"
+    ]
 }

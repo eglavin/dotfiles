@@ -1,6 +1,6 @@
 {
-  "timeStamp": 1767634824000,
-  "version": "1.68.0",
+  "timeStamp": 1790881961016,
+  "version": "1.75.0",
   "userSettings": {
     "cloudStorageEnabled": true,
     "importedLists": [],
@@ -24,7 +24,8 @@
   ],
   "hiddenSettings": {},
   "whitelist": [
-    "192.168.5.4",
+    "account.mygovid.ie",
+    "aib.ie",
     "auth.aib.ie",
     "azure.microsoft.com",
     "chatgpt.com",
@@ -40,11 +41,20 @@
     "mswjs.io",
     "mui.com",
     "music.youtube.com",
+    "myenergi.com",
     "mysignins.microsoft.com",
+    "netdata.cloud",
+    "plex.tv",
     "portal.azure.com",
     "regex101.com",
+    "saj-electric.com",
+    "ui.com",
     "weather.com",
+    "www.bee-link.com",
     "www.computeruniverse.net",
+    "www.dell.com",
+    "www.formula1.com",
+    "www.instagram.com",
     "www.laptopsdirect.ie",
     "www.lifewire.com",
     "www.nexusmods.com",
@@ -55,5 +65,5 @@
   "dynamicFilteringString": "behind-the-scene * * noop\nbehind-the-scene * inline-script noop\nbehind-the-scene * 1p-script noop\nbehind-the-scene * 3p-script noop\nbehind-the-scene * 3p-frame noop\nbehind-the-scene * image noop\nbehind-the-scene * 3p noop",
   "urlFilteringString": "",
   "hostnameSwitchesString": "no-large-media: behind-the-scene false\nno-csp-reports: * true",
-  "userFilters": "x.com##[data-testid=\"hoverCardParent\"]\nwww.nslookup.io###n-dns-records-sidebar-default-wrapper"
+  "userFilters": "x.com##[data-testid=\"hoverCardParent\"]\n\nwww.reddit.com##.right-sidebar-contents"
 }
