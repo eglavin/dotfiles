@@ -1,0 +1,152 @@
+[
+  {
+    "label": "Redistributes",
+    "apps": [
+      { "id": "Microsoft.DirectX" },
+      { "id": "Microsoft.VCRedist.2005.x86" },
+      { "id": "Microsoft.VCRedist.2005.x64" },
+      { "id": "Microsoft.VCRedist.2008.x86" },
+      { "id": "Microsoft.VCRedist.2008.x64" },
+      { "id": "Microsoft.VCRedist.2010.x86" },
+      { "id": "Microsoft.VCRedist.2010.x64" },
+      { "id": "Microsoft.VCRedist.2012.x86" },
+      { "id": "Microsoft.VCRedist.2012.x64" },
+      { "id": "Microsoft.VCRedist.2013.x86" },
+      { "id": "Microsoft.VCRedist.2013.x64" },
+      { "id": "Microsoft.VCRedist.2015+.x86" },
+      { "id": "Microsoft.VCRedist.2015+.x64" }
+    ]
+  },
+  {
+    "label": "Information",
+    "apps": [
+      { "id": "ALCPU.CoreTemp" },
+      { "id": "AntibodySoftware.WizTree" },
+      { "id": "CPUID.CPU-Z" },
+      { "id": "CPUID.HWMonitor" },
+      { "id": "CrystalDewWorld.CrystalDiskInfo" },
+      { "id": "CrystalDewWorld.CrystalDiskMark" },
+      { "id": "NirSoft.BlueScreenView" },
+      { "id": "TechPowerUp.GPU-Z" }
+    ]
+  },
+  {
+    "label": "Tools and utilities",
+    "apps": [
+      { "id": "Bitwarden.Bitwarden" },
+      { "id": "Deskflow.Deskflow" },
+      { "id": "Giorgiotani.Peazip" },
+      { "id": "Iterate.Cyberduck", "tags": ["all", "optional"] },
+      { "id": "LocalSend.LocalSend", "tags": ["all", "optional"] },
+      { "id": "Malwarebytes.Malwarebytes" },
+      { "id": "MHNexus.HxD", "tags": ["all"] },
+      { "id": "Microsoft.PowerToys", "tags": ["all", "optional"] },
+      { "id": "NirSoft.WakeMeOnLan", "tags": ["all", "optional"] },
+      { "id": "NordVPN.NordVPN", "tags": ["all"] },
+      { "id": "Tailscale.Tailscale", "tags": ["all", "optional"] },
+      { "id": "WiresharkFoundation.Wireshark", "tags": ["all"] }
+    ]
+  },
+  {
+    "label": "Browsers",
+    "apps": [
+      { "id": "Google.Chrome", "tags": ["all", "optional", "work"] },
+      { "id": "Mozilla.Firefox" },
+      { "id": "Mozilla.Firefox.DeveloperEdition", "tags": ["all", "optional", "work"] },
+      { "id": "Zen-Team.Zen-Browser", "tags": ["all", "optional"] }
+    ]
+  },
+  {
+    "label": "Text and IDE's",
+    "apps": [
+      {
+        "id": "Microsoft.VisualStudioCode",
+        "options": [
+          "--scope=\"machine\"",
+          "--override=\"/SILENT /SP- /MERGETASKS='!runcode,!desktopicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath'\""
+        ],
+        "tags": ["all", "optional", "work", "vscode"]
+      },
+      { "id": "Neovim.Neovim", "tags": ["all", "optional", "neovim", "work"] },
+      { "id": "Notepad++.Notepad++" },
+      { "id": "Obsidian.Obsidian", "tags": ["all", "optional", "work"] },
+      { "id": "SublimeHQ.SublimeText.4", "tags": ["all"] },
+      { "id": "TheDocumentFoundation.LibreOffice", "tags": ["all", "work"] },
+      { "id": "ZedIndustries.Zed", "tags": ["all"] }
+    ]
+  },
+  {
+    "label": "Command line tools",
+    "apps": [
+      { "id": "ajeetdsouza.zoxide" },
+      { "id": "BurntSushi.ripgrep.MSVC" },
+      { "id": "dandavison.delta" },
+      { "id": "Git.Git" },
+      { "id": "GitHub.cli", "tags": ["all", "optional"] },
+      { "id": "Gyan.FFmpeg", "tags": ["all"] },
+      { "id": "JanDeDobbeleer.OhMyPosh" },
+      { "id": "jdx.mise", "tags": ["all", "optional", "mise", "work"] },
+      { "id": "JesseDuffield.lazygit", "tags": ["all", "optional"] },
+      { "id": "jqlang.jq", "tags": ["all", "optional"] },
+      { "id": "junegunn.fzf" },
+      { "id": "Microsoft.PowerShell" },
+      { "id": "MikeFarah.yq", "tags": ["all", "optional"] },
+      { "id": "tree-sitter.tree-sitter-cli", "tags": ["all", "optional", "neovim", "work"] },
+      { "id": "yt-dlp.yt-dlp", "tags": ["all"] }
+    ]
+  },
+  {
+    "label": "Development tools",
+    "apps": [
+      { "id": "Amazon.AWSCLI", "tags": ["all"] },
+      { "id": "DBBrowserForSQLite.DBBrowserForSQLite", "tags": ["all", "optional", "work"] },
+      { "id": "Docker.DockerDesktop", "tags": ["all"] },
+      { "id": "Google.AndroidStudio", "tags": ["all"] },
+      { "id": "Microsoft.AzureCLI", "tags": ["all", "work"] },
+      { "id": "Microsoft.AzureFunctionsCoreTools", "tags": ["all", "work"] },
+      { "id": "Microsoft.AzureStorageExplorer", "tags": ["all", "work"] },
+      { "id": "Microsoft.SQLServerManagementStudio", "tags": ["all", "work"] },
+      { "id": "MongoDB.DatabaseTools", "tags": ["all"] },
+      { "id": "NVAccess.NVDA", "tags": ["all", "optional", "work"] },
+      { "id": "Postman.Postman", "tags": ["all", "work"] },
+      { "id": "RedHat.Podman", "tags": ["all", "optional", "work"] },
+      { "id": "TPGi.CCAe", "tags": ["all", "optional", "work"] }
+    ]
+  },
+  {
+    "label": "AI tools",
+    "apps": [
+      { "id": "Anthropic.Claude", "tags": ["all", "ai"] },
+      { "id": "Anthropic.ClaudeCode", "tags": ["all", "ai"] }
+    ]
+  },
+  {
+    "label": "Creative",
+    "apps": [
+      { "id": "Audacity.Audacity", "tags": ["all", "optional"] },
+      { "id": "BlenderFoundation.Blender", "tags": ["all"] },
+      { "id": "NickeManarin.ScreenToGif", "tags": ["all", "optional", "work"] },
+      { "id": "OBSProject.OBSStudio", "tags": ["all", "optional"] },
+      { "name": "Affinity Designer 2", "tags": ["all"] },
+      { "name": "Affinity Photo 2", "tags": ["all"] },
+      { "name": "Affinity Publisher 2", "tags": ["all"] }
+    ]
+  },
+  {
+    "label": "Entertainment",
+    "apps": [
+      { "id": "DOSBox.DOSBox", "tags": ["all"] },
+      { "id": "Plex.Plex", "tags": ["all"] },
+      { "id": "Sky.SkyGo", "tags": ["all"] },
+      { "id": "Spotify.Spotify", "tags": ["all"] },
+      { "id": "Valve.Steam", "tags": ["all"] },
+      { "id": "VideoLAN.VLC" }
+    ]
+  },
+  {
+    "label": "Work",
+    "apps": [
+      { "id": "Microsoft.Teams", "tags": ["all", "work"] }
+    ]
+  }
+]

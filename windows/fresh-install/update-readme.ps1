@@ -1,4 +1,4 @@
-. (Join-Path $PSScriptRoot 'apps-to-install', 'list.ps1')
+$listOfGroups = Get-Content (Join-Path $PSScriptRoot 'apps-to-install' 'list.jsonc') -Raw | ConvertFrom-Json
 
 $MarkdownLines = New-Object System.Collections.Generic.List[System.Object]
 $Tags = New-Object System.Collections.Generic.List[System.Object]

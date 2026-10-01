@@ -5,7 +5,7 @@ param (
   [switch]$Debug
 )
 
-. (Join-Path $PSScriptRoot 'apps-to-install', 'list.ps1')
+$listOfGroups = Get-Content (Join-Path $PSScriptRoot 'apps-to-install' 'list.jsonc') -Raw | ConvertFrom-Json
 
 function HasTag {
   param (
