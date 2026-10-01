@@ -195,7 +195,9 @@
                 "cellHeight": "1.4",
                 "face": "JetBrainsMono Nerd Font Mono",
                 "size": 10
-            }
+            },
+            "opacity": 94,
+            "useAcrylic": true
         },
         "list": 
         [
