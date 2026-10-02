@@ -1,5 +1,5 @@
 {
-  "timeStamp": 1790881961016,
+  "timeStamp": 1790927162499,
   "version": "1.75.0",
   "userSettings": {
     "cloudStorageEnabled": true,
@@ -24,6 +24,7 @@
   ],
   "hiddenSettings": {},
   "whitelist": [
+    "192.168.5.4",
     "account.mygovid.ie",
     "aib.ie",
     "auth.aib.ie",
@@ -37,6 +38,7 @@
     "figma.com",
     "github.com",
     "godaddy.com",
+    "login.microsoftonline.com",
     "moz-extension-scheme",
     "mswjs.io",
     "mui.com",
@@ -44,10 +46,13 @@
     "myenergi.com",
     "mysignins.microsoft.com",
     "netdata.cloud",
+    "office.com",
     "plex.tv",
+    "portal.avaloniaui.net",
     "portal.azure.com",
     "regex101.com",
     "saj-electric.com",
+    "sharepoint.com",
     "ui.com",
     "weather.com",
     "www.bee-link.com",
@@ -58,6 +63,7 @@
     "www.laptopsdirect.ie",
     "www.lifewire.com",
     "www.nexusmods.com",
+    "www.rte.ie",
     "www.ryanair.com",
     "www.sky.com",
     "www.youtube.com"
@@ -65,5 +71,5 @@
   "dynamicFilteringString": "behind-the-scene * * noop\nbehind-the-scene * inline-script noop\nbehind-the-scene * 1p-script noop\nbehind-the-scene * 3p-script noop\nbehind-the-scene * 3p-frame noop\nbehind-the-scene * image noop\nbehind-the-scene * 3p noop",
   "urlFilteringString": "",
   "hostnameSwitchesString": "no-large-media: behind-the-scene false\nno-csp-reports: * true",
-  "userFilters": "x.com##[data-testid=\"hoverCardParent\"]\n\nwww.reddit.com##.right-sidebar-contents"
+  "userFilters": "x.com##[data-testid=\"hoverCardParent\"]\n\nwww.reddit.com##.right-sidebar-contents\n\nwww.nslookup.io###n-dns-records-sidebar-default-wrapper"
 }
