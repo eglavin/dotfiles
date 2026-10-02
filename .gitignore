@@ -4,6 +4,7 @@ __pycache__/
 .config/htop/
 .config/mise/config.local.toml
 .config/powershell/Modules/
+.config/powershell/Microsoft.PowerShell_profile.local.ps1
 
 .vim/.netrwhist
 .vim/plugged/
