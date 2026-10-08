@@ -9,5 +9,11 @@
 	"ansible.python.interpreterPath": "python3",
 	"evenBetterToml.schema.associations": {
 		".config/mise/config.toml": "https://mise.jdx.dev/schema/mise.json"
-	}
+	},
+	"json.schemas": [
+		{
+			"fileMatch": ["**/apps-to-install/list.jsonc"],
+			"url": "./windows/fresh-install/apps-to-install/list.schema.json"
+		}
+	]
 }

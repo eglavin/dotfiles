@@ -80,6 +80,12 @@
     "apps": [
       { "id": "ajeetdsouza.zoxide" },
       { "id": "BurntSushi.ripgrep.MSVC" },
+      {
+        "id": "chocolatey.chocolatey",
+        "options": [
+          "--source=\"winget\""
+        ]
+      },
       { "id": "dandavison.delta" },
       { "id": "Git.Git" },
       { "id": "GitHub.cli", "tags": ["all", "optional"] },
