@@ -97,6 +97,7 @@
       { "id": "junegunn.fzf" },
       { "id": "Microsoft.PowerShell" },
       { "id": "MikeFarah.yq", "tags": ["all", "optional"] },
+      { "id": "Rclone.Rclone", "tags": ["all", "optional"] },
       { "id": "tree-sitter.tree-sitter-cli", "tags": ["all", "optional", "neovim", "work"] },
       { "id": "yt-dlp.yt-dlp", "tags": ["all"] }
     ]

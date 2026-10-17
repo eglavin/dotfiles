@@ -104,6 +104,7 @@ winget install --id=ZedIndustries.Zed
 ```ps1
 winget install --id=ajeetdsouza.zoxide
 winget install --id=BurntSushi.ripgrep.MSVC
+winget install --id=chocolatey.chocolatey --source="winget"
 winget install --id=dandavison.delta
 winget install --id=Git.Git
 winget install --id=GitHub.cli
@@ -115,6 +116,7 @@ winget install --id=jqlang.jq
 winget install --id=junegunn.fzf
 winget install --id=Microsoft.PowerShell
 winget install --id=MikeFarah.yq
+winget install --id=Rclone.Rclone
 winget install --id=tree-sitter.tree-sitter-cli
 winget install --id=yt-dlp.yt-dlp
 ```
