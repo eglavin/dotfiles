@@ -2,3 +2,5 @@
 .DS_Store
 npm-debug.log
 Thumbs.db
+
+**/.claude/settings.local.json
