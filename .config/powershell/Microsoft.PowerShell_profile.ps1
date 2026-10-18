@@ -48,4 +48,9 @@ if (Get-Command -Name mise -ErrorAction SilentlyContinue) {
   mise activate pwsh | Out-String | Invoke-Expression
 }
 
+# vite+
+if (Test-Path -Path "$($env:APPDATA)\vite-plus\env.ps1" -PathType Leaf) {
+  . "$($env:APPDATA)\vite-plus\env.ps1"
+}
+
 ############################################
