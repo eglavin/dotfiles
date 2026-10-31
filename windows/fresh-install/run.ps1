@@ -5,7 +5,13 @@ param (
   [switch]$Debug
 )
 
-$listOfGroups = Get-Content (Join-Path $PSScriptRoot 'apps-to-install' 'list.jsonc') -Raw | ConvertFrom-Json
+$appsListFilePath = Join-Path $PSScriptRoot 'apps-to-install' 'list.jsonc'
+if (Test-Path $appsListFilePath) {
+  $listOfGroups = Get-Content $appsListFilePath -Raw | ConvertFrom-Json
+} else {
+  $appsListRemotePath = "https://raw.githubusercontent.com/eglavin/dotfiles/refs/heads/main/windows/fresh-install/apps-to-install/list.jsonc"
+  $listOfGroups = Invoke-RestMethod -Uri $appsListRemotePath
+}
 
 function HasTag {
   param (
