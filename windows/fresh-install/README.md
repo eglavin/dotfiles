@@ -90,6 +90,7 @@ winget install --id=Zen-Team.Zen-Browser
 ### Text and IDE's
 
 ```ps1
+winget install --id=Microsoft.Edit
 winget install --id=Microsoft.VisualStudioCode --scope="machine" --override="/SILENT /SP- /MERGETASKS='!runcode,!desktopicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath'"
 winget install --id=Neovim.Neovim
 winget install --id=Notepad++.Notepad++
@@ -114,6 +115,7 @@ winget install --id=jdx.mise
 winget install --id=JesseDuffield.lazygit
 winget install --id=jqlang.jq
 winget install --id=junegunn.fzf
+winget install --id=Microsoft.Coreutils
 winget install --id=Microsoft.PowerShell
 winget install --id=MikeFarah.yq
 winget install --id=Rclone.Rclone
@@ -144,6 +146,8 @@ winget install --id=TPGi.CCAe
 ```ps1
 winget install --id=Anthropic.Claude
 winget install --id=Anthropic.ClaudeCode
+winget install --id=GitHub.Copilot
+winget install --id=GitHub.CopilotApp
 ```
 
 ### Creative
