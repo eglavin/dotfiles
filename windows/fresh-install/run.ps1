@@ -7,7 +7,7 @@ param (
 
 $listOfGroups = $null
 
-if ($null -ne $PSScriptRoot) {
+if (-not [string]::IsNullOrWhiteSpace($PSScriptRoot)) {
   $appsListFilePath = Join-Path $PSScriptRoot 'apps-to-install' 'list.jsonc'
   if (Test-Path -Path $appsListFilePath) {
     $listOfGroups = Get-Content $appsListFilePath -Raw | ConvertFrom-Json
