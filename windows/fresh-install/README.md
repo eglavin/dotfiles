@@ -11,7 +11,13 @@ By default the run script will only install items without a tag:
 To include items with a tag you can include a `-Tags` argument while running:
 
 ```ps1
-.\run.ps1 -Tags "optional","media"
+.\run.ps1 -Tags "optional","ai"
+```
+
+To run without downloading this repo you can use Invoke-Expression like this:
+
+```ps1
+iex "& {$(irm 'https://raw.githubusercontent.com/eglavin/dotfiles/refs/heads/main/windows/fresh-install/run.ps1')} -Tags 'optional','ai'"
 ```
 
 ## Tags
