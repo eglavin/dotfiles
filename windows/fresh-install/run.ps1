@@ -5,12 +5,23 @@ param (
   [switch]$Debug
 )
 
-$appsListFilePath = Join-Path $PSScriptRoot 'apps-to-install' 'list.jsonc'
-if (Test-Path $appsListFilePath) {
-  $listOfGroups = Get-Content $appsListFilePath -Raw | ConvertFrom-Json
-} else {
-  $appsListRemotePath = "https://raw.githubusercontent.com/eglavin/dotfiles/refs/heads/main/windows/fresh-install/apps-to-install/list.jsonc"
+$listOfGroups = $null
+
+if ($null -ne $PSScriptRoot) {
+  $appsListFilePath = Join-Path $PSScriptRoot 'apps-to-install' 'list.jsonc'
+  if (Test-Path -Path $appsListFilePath) {
+    $listOfGroups = Get-Content $appsListFilePath -Raw | ConvertFrom-Json
+  }
+}
+
+# If the local apps list file is not found, fetch it from the remote URL
+if ($null -eq $listOfGroups) {
+  $appsListRemotePath = 'https://raw.githubusercontent.com/eglavin/dotfiles/refs/heads/main/windows/fresh-install/apps-to-install/list.jsonc'
   $listOfGroups = Invoke-RestMethod -Uri $appsListRemotePath
+}
+
+if ($Dryrun) {
+  Write-Host 'Running in dry-run mode. No installations will be performed.' -ForegroundColor Cyan
 }
 
 function HasTag {
