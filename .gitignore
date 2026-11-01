@@ -6,6 +6,8 @@ __pycache__/
 .config/powershell/Modules/
 .config/powershell/Microsoft.PowerShell_profile.local.ps1
 
+homelab/inventory.ini
+
 .vim/.netrwhist
 .vim/plugged/
 

@@ -1,0 +1,20 @@
+# Copy to inventory.ini (gitignored) and replace with your own hosts.
+# bootstrap_user is your own account, used by bootstrap.yml to create the ansible account
+[ubuntu]
+pi-1       ansible_host=10.0.10.21  bootstrap_user=alice
+pi-2       ansible_host=10.0.10.22  bootstrap_user=alice
+webserver  ansible_host=10.0.20.10  bootstrap_user=admin
+gameserver ansible_host=10.0.20.11  bootstrap_user=admin  auto_reboot=false
+# Ubuntu 25.10+ defaults to sudo-rs, which Ansible times out waiting on, so use the original sudo
+devbox     ansible_host=10.0.20.12  bootstrap_user=admin  ansible_become_exe=sudo.ws
+
+[proxmox]
+hypervisor ansible_host=10.0.10.2   bootstrap_user=admin
+
+[all:vars]
+ansible_user=ansible
+ansible_ssh_private_key_file=~/.ssh/ansible_homelab
+
+[ubuntu:vars]
+# Set to false on a host that should only be told it needs a reboot
+auto_reboot=true

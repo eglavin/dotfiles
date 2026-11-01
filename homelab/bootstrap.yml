@@ -1,0 +1,78 @@
+---
+# Creates the account update.yml connects as: key-only login and passwordless sudo.
+# Run once per host with your own account, via bootstrap.sh.
+- name: Create automation account
+  hosts: all
+  become: true
+
+  vars:
+    automation_user: ansible
+    automation_key: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh/ansible_homelab"
+    # The inventory connects as the automation account, which doesn't exist yet.
+    # Play vars take precedence over inventory vars, and the empty key file lets ssh use your usual keys.
+    ansible_user: "{{ bootstrap_user }}"
+    ansible_ssh_private_key_file: ""
+    public_key: "{{ lookup('ansible.builtin.file', automation_key + '.pub') }}"
+    # Each control machine's key has an ansible@<machine> comment, set by bootstrap.sh
+    this_machine: "{{ public_key.split() | last | regex_replace('^ansible@', '') }}"
+    # Comma separated machine names passed with -e revoke=...
+    revoke_machines: "{{ (revoke | default('')).split(',') | map('trim') | select | list }}"
+
+  tasks:
+    - name: Check this machine isn't being revoked
+      ansible.builtin.assert:
+        that: this_machine not in revoke_machines
+        fail_msg: "Refusing to revoke {{ this_machine }}, the key running this playbook. Revoke it from another control machine."
+        quiet: true
+      run_once: true
+
+    # A locked password ("!" in /etc/shadow) can never match, so the key is the only way in.
+    # Not an empty password, which would allow console and su logins with no password at all.
+    - name: Create {{ automation_user }} user
+      ansible.builtin.user:
+        name: "{{ automation_user }}"
+        shell: /bin/bash
+        password_lock: true
+
+    - name: Create ~/.ssh
+      ansible.builtin.file:
+        path: "/home/{{ automation_user }}/.ssh"
+        state: directory
+        owner: "{{ automation_user }}"
+        group: "{{ automation_user }}"
+        mode: "0700"
+
+    # Adds rather than overwrites, so bootstrapping from another control machine keeps the existing keys
+    - name: Install SSH key for {{ this_machine }}
+      ansible.builtin.lineinfile:
+        path: "/home/{{ automation_user }}/.ssh/authorized_keys"
+        line: "{{ public_key }}"
+        create: true
+        owner: "{{ automation_user }}"
+        group: "{{ automation_user }}"
+        mode: "0600"
+
+    - name: Revoke SSH keys
+      ansible.builtin.lineinfile:
+        path: "/home/{{ automation_user }}/.ssh/authorized_keys"
+        regexp: " ansible@{{ item | regex_escape }}$"
+        state: absent
+      loop: "{{ revoke_machines }}"
+
+    # Ansible runs its modules through `sudo /bin/sh -c ...`, so sudo can't be limited to specific commands
+    - name: Allow passwordless sudo
+      ansible.builtin.copy:
+        content: "{{ automation_user }} ALL=(ALL) NOPASSWD:ALL\n"
+        dest: "/etc/sudoers.d/{{ automation_user }}"
+        owner: root
+        group: root
+        mode: "0440"
+        validate: visudo -cf %s
+
+    - name: Check key login and passwordless sudo as {{ automation_user }}
+      ansible.builtin.command: sudo -n true
+      become: false
+      changed_when: false
+      vars:
+        ansible_user: "{{ automation_user }}"
+        ansible_ssh_private_key_file: "{{ automation_key }}"
