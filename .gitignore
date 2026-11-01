@@ -1,6 +1,7 @@
 __pycache__/
 
 .config/alacritty/alacritty.local.toml
+.config/go/
 .config/htop/
 .config/mise/config.local.toml
 .config/powershell/Modules/
