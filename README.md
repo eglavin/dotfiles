@@ -18,17 +18,11 @@ stow .
 
 Creating the following file will allow you to source your own additions: `~/.zshrc.local`
 
-### Optional fonts install with brew
-
-```sh
-brew install --cask font-fira-code
-brew install --cask font-jetbrains-mono
-brew install --cask font-meslo-lg-nerd-font
-```
-
 ## Installation (Windows)
 
 Requirements: `Git` and `Powershell 7+`
+
+These requirements can be installed with winget using this command: `winget install Git.Git Microsoft.PowerShell`.
 
 The `create-symlinks.ps1` file in the windows folder will take care of linking supported files to the correct location. To download, install and activate, use the following commands from an elevated prompt:
 
@@ -41,12 +35,14 @@ git clone https://github.com/eglavin/dotfiles.git ~/dotfiles
 
 Creating the following file will allow you to source your own additions: `~/dotfiles/.config/powershell/Microsoft.PowerShell_profile.local.ps1`
 
-### Optional fonts install with oh-my-posh
+## Optional fonts install with fontget
+
+Requirements: [`fontget`](https://github.com/Graphixa/FontGet#installation)
 
 ```ps1
-oh-my-posh font install FiraCode
-oh-my-posh font install JetBrainsMono
-oh-my-posh font install Meslo
+fontget add nerd.fira-code
+fontget add nerd.jetbrains-mono
+fontget add nerd.meslo-lg
 ```
 
 ## References

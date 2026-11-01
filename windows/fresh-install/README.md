@@ -73,6 +73,7 @@ winget install --id=TechPowerUp.GPU-Z
 winget install --id=Bitwarden.Bitwarden
 winget install --id=Deskflow.Deskflow
 winget install --id=Giorgiotani.Peazip
+winget install --id=Graphixa.FontGet
 winget install --id=Iterate.Cyberduck
 winget install --id=LocalSend.LocalSend
 winget install --id=Malwarebytes.Malwarebytes

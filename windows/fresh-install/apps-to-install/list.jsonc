@@ -36,6 +36,7 @@
       { "id": "Bitwarden.Bitwarden" },
       { "id": "Deskflow.Deskflow" },
       { "id": "Giorgiotani.Peazip" },
+      { "id": "Graphixa.FontGet", "tags": ["all", "optional"] },
       { "id": "Iterate.Cyberduck", "tags": ["all"] },
       { "id": "LocalSend.LocalSend", "tags": ["all", "optional"] },
       { "id": "Malwarebytes.Malwarebytes" },
