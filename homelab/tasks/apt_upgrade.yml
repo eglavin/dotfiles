@@ -18,11 +18,10 @@
     path: /var/run/reboot-required
   register: reboot_required_file
 
-# Catches a new kernel on hosts that don't write the reboot-required flag
+# Catches a new kernel on hosts that don't write the reboot-required flag.
+# No pipefail: LXC containers use the Proxmox host's kernel and have none in /boot, which leaves stdout empty.
 - name: Find newest installed kernel
-  ansible.builtin.shell: set -o pipefail && ls -1 /boot/vmlinuz-* | sort -V | tail -n 1
-  args:
-    executable: /bin/bash
+  ansible.builtin.shell: ls -1 /boot/vmlinuz-* 2> /dev/null | sort -V | tail -n 1
   register: newest_kernel
   changed_when: false
 
@@ -30,4 +29,5 @@
   ansible.builtin.set_fact:
     reboot_needed: >-
       {{ reboot_required_file.stat.exists
-         or (newest_kernel.stdout | basename) != ('vmlinuz-' ~ ansible_facts['kernel']) }}
+         or (newest_kernel.stdout != ''
+             and (newest_kernel.stdout | basename) != ('vmlinuz-' ~ ansible_facts['kernel'])) }}
