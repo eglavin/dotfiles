@@ -70,4 +70,48 @@ ansible all -i inventory.ini -m ping  # check every host is reachable
 ./run.sh --limit webserver,pi-1      # update some hosts
 ```
 
-If an Ubuntu 25.10+ host fails waiting for the sudo prompt, it's using sudo-rs, so add `ansible_become_exe=sudo.ws` to that host in the inventory.
+## Troubleshooting
+
+### `ssh_askpass: exec(/usr/bin/ssh-askpass): No such file or directory` / `Host key verification failed`
+
+The control machine hasn't seen that host's SSH key before. Ansible runs ssh without a terminal, so ssh can't ask "Are you sure you want to continue connecting?" and fails. This happens on every new control machine.
+
+Connect to each failing host once by hand and accept its key:
+
+```sh
+ssh admin@10.0.10.2 true
+```
+
+Before typing `yes`, check the fingerprint against one from a control machine that already trusts the host:
+
+```sh
+ssh-keygen -lF 10.0.10.2    # on the trusted machine
+```
+
+If it doesn't match, don't accept it: either the host was reinstalled, or something is impersonating it.
+
+If Windows on the same machine already trusts the hosts, you can copy its entries into WSL instead (replace the IPs and Windows username):
+
+```sh
+for ip in 10.0.10.2 10.0.10.21; do
+	ssh-keygen -F "$ip" -f /mnt/c/Users/<windows-user>/.ssh/known_hosts | grep -v '^#'
+done >> ~/.ssh/known_hosts
+```
+
+Don't set `host_key_checking = False` to get around it, that would let anything answering on the host's IP log your password.
+
+### `Permission denied (publickey,password)` during the bootstrap
+
+The bootstrap logs in with your own account, and the control machine has no SSH key for it, so it needs your password. Check the output: without `--ask-pass` there's only a `BECOME password:` prompt and no `SSH password:` one.
+
+```sh
+./bootstrap.sh --ask-pass
+```
+
+At `BECOME password[defaults to SSH password]:`, press Enter to reuse the SSH password. If your accounts have different passwords, run it once per account with `--limit`.
+
+This only affects the bootstrap. Afterwards `run.sh` logs in as `ansible` with the key.
+
+### Timed out waiting for the sudo prompt
+
+An Ubuntu 25.10+ host uses sudo-rs by default, which Ansible can't answer. Add `ansible_become_exe=sudo.ws` to that host in the inventory.
